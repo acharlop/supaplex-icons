@@ -8,17 +8,17 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../screen.css">
   <style>
-    @font-face { font-family: 'Supaplex 8'; src: url(../fonts/supaplex-8.woff2) format('woff2'), url(../fonts/supaplex-8.ttf) format('truetype'); }
     @font-face { font-family: 'Supaplex Heading'; src: url(../fonts/supaplex-heading.woff2) format('woff2'), url(../fonts/supaplex-heading.ttf) format('truetype'); }
   </style>
 </head>
 <body>
   <header class="bar">
-    <h1><a href="../" class="home">Supaplex SVG</a></h1>
-    <nav class="pages"><a href="title-2.html">Credits</a> <a href="menu.html">Menu</a> <a href="controls.html">Controls</a> <a href="gfx.html">The cast</a> <a aria-current="page">Game panel</a></nav>
-    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <a class="logo pix" href="../"><img class="px" src="../svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="../sprites.html">Sprites</a><a href="../fonts.html">Fonts</a><a href="title-2.html" aria-current="page">Screens</a><a href="menu.html">Play the menu</a></nav>
+    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
   <main class="screens">
+    <nav class="pages seg"><a href="title-2.html">Credits</a><a href="menu.html">Menu</a><a href="controls.html">Controls</a><a href="gfx.html">The cast</a><a aria-current="page">Game panel</a></nav>
     <div class="frame"><div id="scr" class="scr" style="width:320px;height:24px">
       <img class="bg" src="panel.svg" alt="" width="320" height="24">
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:16px;top:3px;font:7px/7px 'Supaplex Heading'">PLAYER</div>
@@ -31,9 +31,12 @@
       <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Level name" style="left:64px;top:14px;min-width:184px;font:8px/8px 'Supaplex 8';color:#7799ee"></div>
       <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Infotrons" style="left:272px;top:14px;min-width:24px;font:8px/8px 'Supaplex 8';color:#7799ee"></div>
       <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Debug" style="left:304px;top:14px;min-width:16px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+      <img class="icon" src="panel-infotron.svg" alt="Infotron" width="9" height="10" draggable="false" style="left:256px;top:13px">
     </div></div>
     <div id="toolbar" class="toolbar"></div>
   </main>
   <script type="module" src="../screen.js"></script>
+  <script type="application/json" id="game">{"levels":[["------- WARM UP -------",19],["-------- EXIT! --------",0],["------ STONE-AGE ------",60],["------ COLLECTOR ------",60],["------ EASY DEAL ------",51],["--- DOWN THEY FALL! ---",15],["----- GO THROUGH! -----",44],["--- GET THOSE TOO!! ---",150],["------ BUG FUNNY ------",64],["- EASY COME, EASY GO! -",170],["---- RUN FOR LIFE! ----",25],["----- IGNORE THEM -----",45],["------ ANONYMOUS ------",155],["------ FALL OUT! ------",75],["---- ONE THING ... ----",95],["----- JUST DO IT! -----",45],["-------- BANG! --------",9],["------- QUICKY! -------",1],["----- CRAZY HARRY -----",64],["----- MINOTAURUS! -----",46],["------- GRAVITY -------",54],["----- UP AND DOWN -----",53],["------ BOMB TIME ------",69],["- 200 MOVING OBJECTS! -",14],["-------- YAWN! --------",123],["--------- ONE ---------",1],["----- ONCE AROUND -----",133],["----- BABA'S WORK -----",124],["--------- TNT ---------",74],["----- NO PROBLEM! -----",99],["---- TIME TO OPEN! ----",120],["---- EASY BUSINESS ----",58],["-INSIDE-OUTSIDE-INSIDE-",56],["----- EASY RIDER! -----",90],["----- NO MIRACLE! -----",9],["-------- PUSH! --------",1],["---- NEARLY BORING ----",87],["------ BOMBASTIC ------",45],["------- SIMPLE! -------",76],["--- MIND THE STONES ---",82],["----- TIME-RUNNER -----",11],["--- LITTLE PLEASURE ---",11],["--- ANTI-CLOCKWISE! ---",18],["------ TELEPATHY ------",44],["------ EASY WORK ------",144],["---- CHAMBER-MUSIC ----",34],["--- LOOKS DIFFICULT ---",40],["-- READY-STEADY-GO!! --",103],["---- FALL-FESTIVAL ----",28],["---- DON'T WORRY!! ----",42],["---- STATE OF MIND ----",45],["--- DO IT YOURSELF! ---",124],["------- FILL IN -------",17],["-- CORNER CONFUSION! --",4],["---- THE ELDRITCH! ----",81],["----- KEEP COOL!! -----",56],["--- THOSE WE LIKE!! ---",53],["---- ALL TOGETHER! ----",142],["-------- VICE- --------",60],["-------- VERSA --------",76],["---- PRE-IGNITION! ----",82],["-------- GUMBO --------",1],["---- PHIL'S FIRST! ----",143],["---- THERE YOU GO! ----",78],["----- PATHFINDER! -----",14],["---- ISLAND HOPPER ----",56],["---- GET THEM OUT! ----",135],["----- TOUGH GOING -----",12],["------ HURRY UP! ------",110],["- TOUGH BUT POSSIBLE! -",119],["----- HEAD-HUNTER -----",141],["--- COMMUNITY WORK! ---",119],["------- ONE WAY -------",84],["--- INSPIN-OUTSPIN! ---",1],["-------- NICE ---------",80],["--- ALL THE FAMILY! ---",126],["---- LITTLE DETAIL ----",107],["---- TRANSPORT IT! ----",103],["-- DON'T WASTE THEM! --",51],["-CLASSIC ENTERTAINMENT-",61],["------ DIAGONAL! ------",107],["---- TIME IS INFO! ----",142],["----- FUN-TASTIC! -----",107],["---- ALL THAT FUSS ----",41],["---- A PRO'S WORK! ----",84],["-------- CRASH --------",63],["-- SEE YOU TOMORROW! --",51],["---- FLIP AND FLOP ----",45],["----- TRIPLE FORK -----",32],["----- KNOW THAT ? -----",54],["----- VOYAGER III -----",43],["HAM AND CHEESE SANDWICH",78],["------- TIMING! -------",9],["-EINSTEIN'S FAVOURITE!-",50],["------ GOOD LUCK ------",114],["------- CRACKER -------",44],["------ GOOD JOB! ------",62],["----- MIXED SALAD -----",92],["-- JOYSTICK-HANDLING --",0],["--------- IQ! ---------",162],["------- ON-OFF! -------",87],["----- SUB-EFFECTS -----",177],["------ KNOW-HOW! ------",49],["-------- CHAOS --------",178],["---- ONE'S MISSING ----",73],["----- WATCH OUT!! -----",94],["---- FIND THE WAY! ----",82],["------- SADISM! -------",99],["- UPSTAIRS-DOWNSTAIRS -",13],["---- TROUBLE AHEAD ----",203],["------ BRAINMAN! ------",101]],"palette":["#000000","#ffffff","#eeee00","#008855","#00bb66","#bbbbbb","#ee1111","#999999","#7799ee","#5555dd","#884400","#bb0000","#ff9944","#666666","#777777","#888888"]}</script>
+  <script type="module" src="../panel.js"></script>
 </body>
 </html>

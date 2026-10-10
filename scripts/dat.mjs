@@ -63,3 +63,9 @@ export function crop(sheet, x, y, w, h) {
     Array.from(sheet.pixels.subarray((y + row) * sheet.width + x, (y + row) * sheet.width + x + w)),
   );
 }
+
+// LEVELS.DAT: 111 levels of 1536 bytes; the title is 23 bytes at 1446 and the infotrons needed at 1470, 0 meaning every infotron on the map.
+export const readLevels = (buf) => Array.from({ length: buf.length / 1536 }, (_, i) => {
+  const level = buf.subarray(i * 1536, (i + 1) * 1536);
+  return [level.subarray(1446, 1469).toString('latin1'), level[1470] || level.subarray(0, 1440).filter((t) => t === 4).length];
+});

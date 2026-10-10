@@ -10,12 +10,9 @@ const state = {
   kind: params.get('kind') ?? 'all',
 };
 const $ = (id) => document.getElementById(id);
-const done = (s) => Boolean(s.pixel);
 // Screens and wide frames never shrink below native size.
 const widthAt = (sprite, size) => Math.max(size, sprite.w);
 let timer;
-
-$('progress').textContent = `${catalog.filter(done).length} / ${catalog.length} pixel-exact`;
 
 function save() {
   history.replaceState(null, '', `#s=${state.id}&size=${state.size}&kind=${state.kind}`);
@@ -23,11 +20,6 @@ function save() {
 
 function original(sprite, width, animate = true) {
   const el = document.createElement('div');
-  if (!sprite.frames) {
-    el.className = 'missing';
-    el.textContent = 'Not decoded yet';
-    return el;
-  }
   const scale = width / sprite.w;
   el.className = 'film';
   el.style.width = `${sprite.w * scale}px`;
@@ -67,7 +59,7 @@ function renderDetail() {
   const sprite = catalog.find((s) => s.id === state.id) ?? catalog[0];
   clearInterval(timer);
   $('detail-name').textContent = sprite.name;
-  $('detail-meta').textContent = [sprite.file, sprite.frames > 1 && `${sprite.frames} frames`, sprite.todo].filter(Boolean).join(' · ');
+  $('detail-meta').textContent = [sprite.file, `${sprite.w}×${sprite.h}`, sprite.frames > 1 && `${sprite.frames} frames`].filter(Boolean).join(' · ');
   $('stage-original').replaceChildren(original(sprite, widthAt(sprite, state.size)));
   for (const kind of ['pixel', 'smooth']) {
     $(`stage-${kind}`).replaceChildren(variant(sprite, kind, state.size));
@@ -77,7 +69,7 @@ function renderDetail() {
     link.textContent = sprite.frames > 1 && kind === 'pixel' ? 'frame 1 svg' : 'svg';
   }
   $('dl-font').hidden = !sprite.fonts;
-  document.querySelectorAll('.sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.size));
+  document.querySelectorAll('#sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.size));
   document.querySelectorAll('#grid button').forEach((b) => b.setAttribute('aria-current', b.value === sprite.id));
 }
 
@@ -91,10 +83,7 @@ function renderGrid() {
     thumb.classList.add('thumb');
     const name = document.createElement('span');
     name.textContent = sprite.name;
-    const status = document.createElement('span');
-    status.className = done(sprite) ? 'status done' : 'status';
-    status.textContent = done(sprite) ? 'Pixel-exact' : 'To do';
-    button.append(thumb, name, status);
+    button.append(thumb, name);
     button.addEventListener('click', () => { state.id = sprite.id; save(); renderDetail(); });
     li.append(button);
     return li;
@@ -103,7 +92,7 @@ function renderGrid() {
   renderDetail();
 }
 
-document.querySelector('.sizes').append(...SIZES.map((size) => {
+$('sizes').append(...SIZES.map((size) => {
   const b = document.createElement('button');
   b.value = size;
   b.textContent = `${size}px`;

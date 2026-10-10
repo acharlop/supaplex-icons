@@ -21,7 +21,7 @@ const COPYRIGHT = 'Glyphs from Supaplex (c) 1991 Digital Integration / Dream Fac
 const catalog = [];
 for (const sprite of sprites) {
   const { file, w, h } = sprite.source;
-  const entry = { id: sprite.id, name: sprite.name, kind: sprite.kind, file, todo: sprite.todo ?? null, pixel: null };
+  const entry = { id: sprite.id, name: sprite.name, kind: sprite.kind, file, pixel: null };
   const decoded = await decode(sprite);
 
   if (decoded) {

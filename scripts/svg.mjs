@@ -1,7 +1,7 @@
 export const TRANSPARENT = -1;
 
 // Black that touches the frame edge is background; black enclosed by the sprite (eyes, outlines) stays.
-export function clearBackground(grid) {
+export function clearBackground(grid, colours = [0]) {
   const h = grid.length, w = grid[0].length;
   const out = grid.map((row) => [...row]);
   const stack = [];
@@ -9,7 +9,7 @@ export function clearBackground(grid) {
   for (let y = 0; y < h; y++) stack.push([0, y], [w - 1, y]);
   while (stack.length) {
     const [x, y] = stack.pop();
-    if (x < 0 || y < 0 || x >= w || y >= h || out[y][x] !== 0) continue;
+    if (x < 0 || y < 0 || x >= w || y >= h || !colours.includes(out[y][x])) continue;
     out[y][x] = TRANSPARENT;
     stack.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
   }

@@ -4,10 +4,14 @@ import { BACKGROUND, decode, framePath, root, sprites } from './sprites.mjs';
 import { TRANSPARENT, clearBackground, pixelSvg } from './svg.mjs';
 import { canvas, deriveFont, layout, screen } from './glyphs.mjs';
 import { ttf, woff2 } from './ttf.mjs';
+import { loadAsset } from './assets.mjs';
+import { readLevels } from './dat.mjs';
 
 const out = new URL('screens/', root);
 const EXACT = { exactUpTo: 0, cornerCut: 0 };
 const GAME_FONTS = { 'font-6': 'Supaplex 6', 'font-8': 'Supaplex 8' };
+// Escaped so level titles can never close the script tag.
+const json = (v) => JSON.stringify(v).replace(/</g, '\\u003c');
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
@@ -76,7 +80,7 @@ export async function buildScreens(copyright) {
       let grid, src, name;
       if (icon.crop) {
         const [cx, cy, w, h] = icon.crop;
-        grid = clearBackground(g.slice(cy, cy + h).map((row) => row.slice(cx, cx + w)));
+        grid = clearBackground(g.slice(cy, cy + h).map((row) => row.slice(cx, cx + w)), icon.clear);
         src = `${id}-${slug(icon.name)}.svg`;
         name = icon.name;
         await writeFile(new URL(src, out), pixelSvg(grid, palette, name, EXACT));
@@ -96,6 +100,7 @@ export async function buildScreens(copyright) {
   }
 
   const pages = Object.entries(screens).map(([id, s]) => ({ id, name: s.name }));
+  const levels = readLevels(await loadAsset('LEVELS.DAT'));
   for (const [id, s] of Object.entries(screens)) {
     const { grids: [g], palette } = await screen(id);
     const name = s.name;
@@ -118,19 +123,19 @@ export async function buildScreens(copyright) {
     }
     for (const slot of s.slots ?? []) {
       const family = GAME_FONTS[slot.font];
-      families.add(family);
       els.push(`<div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="${escape(slot.label)}" style="left:${slot.x}px;top:${slot.y}px;min-width:${slot.w}px;font:8px/8px '${family}';color:${palette[slot.colour]}"></div>`);
     }
     for (const i of icons.get(id)) {
       els.push(`<img class="icon" src="${i.src}" alt="${escape(i.name)}" width="${i.w}" height="${i.h}" draggable="false" style="left:${i.x}px;top:${i.y}px">`);
     }
-    const files = (family) => {
-      const f = fontList.find((x) => x.family === family);
-      const base = f ? `supaplex-${f.name}` : `supaplex-${family.split(' ')[1]}`;
-      return `url(../fonts/${base}.woff2) format('woff2'), url(../fonts/${base}.ttf) format('truetype')`;
-    };
-    const faces = [...families].sort().map((family) => `    @font-face { font-family: '${family}'; src: ${files(family)}; }`).join('\n');
-    const nav = pages.map((p) => (p.id === id ? `<a aria-current="page">${escape(p.name)}</a>` : `<a href="${p.id}.html">${escape(p.name)}</a>`)).join(' ');
+    const faces = [...families].sort().map((family) => {
+      const [woff, ttfFile] = fontList.find((f) => f.family === family).files;
+      return `    @font-face { font-family: '${family}'; src: url(../${woff}) format('woff2'), url(../${ttfFile}) format('truetype'); }`;
+    }).join('\n');
+    const nav = pages.map((p) => (p.id === id ? `<a aria-current="page">${escape(p.name)}</a>` : `<a href="${p.id}.html">${escape(p.name)}</a>`)).join('');
+    const game = s.script ? `
+  <script type="application/json" id="game">${json({ levels, palette })}</script>
+  <script type="module" src="../${s.script}.js"></script>` : '';
     const [w, h] = [g[0].length, g.length];
     await writeFile(new URL(`${id}.html`, out), `<!doctype html>
 <html lang="en">
@@ -147,18 +152,19 @@ ${faces}
 </head>
 <body>
   <header class="bar">
-    <h1><a href="../" class="home">Supaplex SVG</a></h1>
-    <nav class="pages">${nav}</nav>
-    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <a class="logo pix" href="../"><img class="px" src="../svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="../sprites.html">Sprites</a><a href="../fonts.html">Fonts</a><a href="title-2.html"${id === 'menu' ? '' : ' aria-current="page"'}>Screens</a><a href="menu.html"${id === 'menu' ? ' aria-current="page"' : ''}>Play the menu</a></nav>
+    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
   <main class="screens">
-    <div class="frame"><div id="scr" class="scr" style="width:${w}px;height:${h}px"${intro}>
+    <nav class="pages seg">${nav}</nav>
+    <div class="frame"><div id="scr" class="scr" style="width:${w}px;height:${h}px"${intro}${s.script === 'menu' ? ' data-play' : ''}>
       <img class="bg" src="${id}.svg" alt="" width="${w}" height="${h}">
       ${els.join('\n      ')}
     </div></div>
     <div id="toolbar" class="toolbar"></div>
   </main>
-  <script type="module" src="../screen.js"></script>
+  <script type="module" src="../screen.js"></script>${game}
 </body>
 </html>
 `);

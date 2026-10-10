@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supaplex sprites</title>
+  <meta name="description" content="Every Supaplex tile and animation as SVG, pixel-exact up to 256px.">
+  <link rel="icon" href="svg/pixel/murphy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="logo pix" href="./"><img class="px" src="svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="sprites.html" aria-current="page">Sprites</a><a href="fonts.html">Fonts</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
+    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+  </header>
+
+  <main class="wrap layout">
+    <section class="detail panel" aria-live="polite">
+      <h2 id="detail-name" class="pix"></h2>
+      <p id="detail-meta" class="muted"></p>
+      <div class="seg" id="sizes" role="group" aria-label="Preview size"></div>
+      <div class="stages">
+        <figure><div class="stage" id="stage-original"></div><figcaption>Original</figcaption></figure>
+        <figure><div class="stage" id="stage-pixel"></div><figcaption>Pixel <a id="dl-pixel" download>svg</a> <a id="dl-font" href="fonts.html">font</a></figcaption></figure>
+        <figure><div class="stage" id="stage-smooth"></div><figcaption>Smooth <a id="dl-smooth" download>svg</a></figcaption></figure>
+      </div>
+    </section>
+
+    <section>
+      <nav class="seg tabs" role="tablist" aria-label="Sprite kind"></nav>
+      <ul id="grid" class="grid"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <img class="px" src="svg/pixel/infotron.svg" alt="">
+      <span>Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.</span>
+    </div>
+  </footer>
+  <script type="module" src="sprites.js"></script>
+</body>
+</html>

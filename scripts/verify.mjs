@@ -5,6 +5,9 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
 import { decode, fontFiles, framePath, pixel, root, sprites } from './sprites.mjs';
+import { loadAsset } from './assets.mjs';
+import { readLevels } from './dat.mjs';
+import { frame, seed } from '../site/supaplex.js';
 
 const run = promisify(execFile);
 const chrome = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -101,6 +104,16 @@ for (const [id, s] of Object.entries(screens).filter(([id]) => !ids.length || id
     const dim = g.map((row) => row.map((c) => palette[c]));
     states[0][0] = '&at=end';
     for (const d of [0, 60, 121]) states.push([`&at=${d}`, splitAt(from, dim, d)]);
+  }
+  if (s.script === 'menu') {
+    // The seed save as the game would draw it: arrow borders, then each char's 6x7 cell cleared and inked.
+    const want = states[0][1], { palette } = await decode(sprites.find((sp) => sp.id === id));
+    const { grids: glyphs } = await decode(sprites.find((sp) => sp.id === 'font-6'));
+    const f = frame(seed(), readLevels(await loadAsset('LEVELS.DAT')));
+    for (const l of f.lines) for (let y = l.y; y < l.y + l.h; y++) for (let x = l.x; x < l.x + l.w; x++) want[y][x] = palette[l.colour];
+    for (const t of f.texts) [...t.text].forEach((ch, i) => glyphs[ch.charCodeAt(0) - 0x20].forEach((row, y) => row.forEach((c, x) => {
+      want[t.y + y][t.x + 6 * i + x] = palette[c ? t.colour : 0];
+    })));
   }
   for (const [query, want] of states) for (const k of [1, 2, 4]) screenJobs.push({ id: `screens/${id}${query.replace('&at=', '@')}`, query: `bare&zoom=${k}${query}`, k, want });
 }

@@ -1,10 +1,11 @@
-.pages { flex: 1; display: flex; flex-wrap: wrap; gap: .75rem; }
-.pages a[aria-current] { color: inherit; font-weight: 600; }
 .screens { display: grid; gap: 1rem; justify-items: start; padding: 1.25rem; }
-.frame { max-width: 100%; overflow: auto; }
+.pages a { padding: .25rem .65rem; border: 2px solid var(--line); color: var(--muted); text-decoration: none; font-size: .9rem; }
+.pages a:hover { color: #fff; border-color: var(--hi); }
+.pages a[aria-current] { color: var(--yellow); border-color: var(--yellow); }
+.frame { max-width: 100%; overflow: auto; border: 2px solid var(--line); }
 
 .scr { position: relative; overflow: hidden; background: #000; }
-.scr > *, .intro * { position: absolute; margin: 0; }
+.scr > *, .intro *, .game > *, .overlay > * { position: absolute; margin: 0; }
 .scr img { display: block; }
 .scr [hidden] { display: none; }
 .t { white-space: pre; transform-origin: 0 0; font-kerning: normal; -webkit-font-smoothing: antialiased; caret-color: #fff; outline: none; }
@@ -15,11 +16,25 @@
 .intro { inset: 0; overflow: hidden; pointer-events: none; }
 .intro div { overflow: hidden; }
 
+/* The game draws its text into whole cells, clearing each one to black first. */
+.op { height: 7px; overflow: hidden; background: #000; font-size: 8px; line-height: 8px; }
+.game .op { font-family: 'Supaplex 6'; }
+.game, .overlay { inset: 0; }
+.game { pointer-events: none; }
+.hit { cursor: pointer; touch-action: none; }
+.hit.down:not(.arrow) { background: rgb(0 0 0 / .35); }
+.overlay { overflow: hidden; }
+.overlay.black { background: #000; opacity: 0; pointer-events: none; }
+.info { font: 8px/8px 'Supaplex 6'; color: #fff; }
+.name { left: 232px; top: 127px; width: 48px; height: 7px; opacity: 0; border: 0; padding: 0; font-size: 16px; pointer-events: none; }
+.playing { cursor: pointer; }
+
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
-.toolbar button, .toolbar select { border: 1px solid var(--line); background: transparent; border-radius: 6px; padding: .25rem .6rem; font: inherit; color: inherit; }
-.toolbar button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.toolbar button, .toolbar select { padding: .25rem .65rem; font-size: .9rem; }
 .toolbar .hint { flex-basis: 100%; margin: 0; font-size: .85rem; }
 
 .bare { background: #000; }
-.bare .bar, .bare .toolbar { display: none; }
+.bare .bar, .bare .toolbar, .bare .pages { display: none; }
 .bare .screens { padding: 0; }
+.fit .screens { min-height: 100vh; place-content: center; justify-items: center; }
+.bare .frame { border: 0; }

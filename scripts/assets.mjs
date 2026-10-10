@@ -18,6 +18,7 @@ const FILES = {
   'CONTROLS.DAT': 'ece4bfb377f834d3c9cadb609065f277dcc9f2bbfa5df1697395b77cb497f46e',
   'BACK.DAT': '200b1118e798b50aa36962467d214ba595475118c82affe447f132cd90db72ef',
   'GFX.DAT': '2eaf2f24f4a269d3b81307ec60cd1da6b9751f12d3c39396ecfc66d70d790cdc',
+  'LEVELS.DAT': 'f41f3ad35b3eca845baceb1e11db61f185b45b38deefb39f67ef6c3dfc33fbb0',
 };
 
 const sha256 = (buf) => createHash('sha256').update(buf).digest('hex');

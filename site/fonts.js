@@ -18,10 +18,10 @@ function render() {
   for (const sample of document.querySelectorAll('.screen-font .sample')) {
     sample.style.font = `${sample.dataset.h * state.scale}px/${sample.dataset.h * state.scale}px '${sample.dataset.family}'`;
   }
-  document.querySelectorAll('.sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.scale));
+  document.querySelectorAll('#sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.scale));
 }
 
-document.querySelector('.sizes').append(...SCALES.map((scale) => {
+document.getElementById('sizes').append(...SCALES.map((scale) => {
   const b = document.createElement('button');
   b.value = scale;
   b.textContent = `${8 * scale}px`;

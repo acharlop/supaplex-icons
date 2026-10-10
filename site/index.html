@@ -10,34 +10,96 @@
 </head>
 <body>
   <header class="bar">
-    <h1>Supaplex SVG</h1>
-    <p id="progress" class="muted"></p>
-    <a href="fonts.html">Fonts</a>
-    <a href="screens/title-2.html">Screens</a>
-    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <a class="logo pix" href="./"><img class="px" src="svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="sprites.html">Sprites</a><a href="fonts.html">Fonts</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
+    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
 
-  <main class="layout">
-    <section class="detail" aria-live="polite">
-      <h2 id="detail-name"></h2>
-      <p id="detail-meta" class="muted"></p>
-      <div class="sizes" role="group" aria-label="Preview size"></div>
-      <div class="stages">
-        <figure><div class="stage" id="stage-original"></div><figcaption>Original</figcaption></figure>
-        <figure><div class="stage" id="stage-pixel"></div><figcaption>Pixel <a id="dl-pixel" download>svg</a> <a id="dl-font" href="fonts.html">font</a></figcaption></figure>
-        <figure><div class="stage" id="stage-smooth"></div><figcaption>Smooth <a id="dl-smooth" download>svg</a></figcaption></figure>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="kicker pix small">Digital Integration · 1991</p>
+          <h1 class="pix x4">Every pixel of <em>Supaplex</em></h1>
+          <p>The sprites, fonts and screens of the 1991 classic, rebuilt as SVG, fonts and HTML. Every frame matches the original pixel for pixel at every size up to 256px.</p>
+          <div class="cta">
+            <a class="btn primary" href="screens/menu.html">Play the menu</a>
+            <a class="btn" href="sprites.html">Browse sprites</a>
+            <a class="btn" href="fonts.html">Get the fonts</a>
+          </div>
+          <ul class="stats pix" id="stats"></ul>
+        </div>
+        <div class="monitor"><img class="px" src="svg/pixel/title.svg" alt="Supaplex title screen" width="640" height="400"></div>
       </div>
     </section>
 
-    <section class="list">
-      <nav class="tabs" role="tablist" aria-label="Sprite kind"></nav>
-      <ul id="grid" class="grid"></ul>
-    </section>
+    <div class="cast" aria-label="The cast"></div>
+
+    <div class="wrap">
+      <section class="section" id="play">
+        <header>
+          <div>
+            <h2 class="pix x3 yellow">Main menu</h2>
+            <p>The game's main menu with a save game loaded. The buttons work as they do in the game.</p>
+          </div>
+          <a class="btn" href="screens/menu.html">Open full size</a>
+        </header>
+        <div class="play">
+          <div class="monitor"><iframe src="screens/menu.html?bare" title="Supaplex main menu" width="640" height="400"></iframe></div>
+          <div class="panel">
+            <p class="kicker pix small">Try</p>
+            <ol>
+              <li><b>Arrows under PLAYER and LEVEL-LIST</b> scroll the players and the 111 levels.</li>
+              <li><b>Arrows beside RANKINGS</b> scroll the ranking table.</li>
+              <li><b>new player</b> asks for a name on the message line. Type, then Enter.</li>
+              <li><b>skip level</b>, <b>delete player</b> and <b>statistics</b> answer on the message line.</li>
+              <li><b>gfx-tutor</b>, <b>controls</b> and the <b>chip</b> beside the hall of fame open their screens.</li>
+              <li><b>OK</b> starts the level: the game panel.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="screens">
+        <header>
+          <div>
+            <h2 class="pix x3 yellow">Screens</h2>
+            <p>Each screen is an HTML page over an SVG background. Edit the text, drag icons, add new ones and download the result.</p>
+          </div>
+        </header>
+        <div class="cards" id="screen-cards"></div>
+      </section>
+
+      <section class="section" id="sprites">
+        <header>
+          <div>
+            <h2 class="pix x3 yellow">Sprites</h2>
+            <p>Tiles and animations as pixel SVG, one file per frame.</p>
+          </div>
+          <a class="btn" href="sprites.html">All sprites</a>
+        </header>
+        <div class="tiles px" id="tiles"></div>
+      </section>
+
+      <section class="section" id="fonts">
+        <header>
+          <div>
+            <h2 class="pix x3 yellow">Fonts</h2>
+            <p>The two in-game fonts as WOFF2 and TrueType, plus colour fonts learned from the text on the screens.</p>
+          </div>
+          <a class="btn" href="fonts.html">All fonts</a>
+        </header>
+        <div class="typeset" id="typeset"></div>
+      </section>
+    </div>
   </main>
 
-  <footer class="muted">
-    Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.
+  <footer>
+    <div class="wrap">
+      <img class="px" src="svg/pixel/infotron.svg" alt="">
+      <span>Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.</span>
+    </div>
   </footer>
-  <script type="module" src="app.js"></script>
+  <script type="module" src="home.js"></script>
 </body>
 </html>

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../screen.css">
   <style>
-    @font-face { font-family: 'Supaplex 6'; src: url(../fonts/supaplex-6.woff2) format('woff2'), url(../fonts/supaplex-6.ttf) format('truetype'); }
     @font-face { font-family: 'Supaplex Heading'; src: url(../fonts/supaplex-heading.woff2) format('woff2'), url(../fonts/supaplex-heading.ttf) format('truetype'); }
     @font-face { font-family: 'Supaplex Heading 6'; src: url(../fonts/supaplex-heading-6.woff2) format('woff2'), url(../fonts/supaplex-heading-6.ttf) format('truetype'); }
     @font-face { font-family: 'Supaplex Menu'; src: url(../fonts/supaplex-menu.woff2) format('woff2'), url(../fonts/supaplex-menu.ttf) format('truetype'); }
@@ -16,12 +15,13 @@
 </head>
 <body>
   <header class="bar">
-    <h1><a href="../" class="home">Supaplex SVG</a></h1>
-    <nav class="pages"><a href="title-2.html">Credits</a> <a aria-current="page">Menu</a> <a href="controls.html">Controls</a> <a href="gfx.html">The cast</a> <a href="panel.html">Game panel</a></nav>
-    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <a class="logo pix" href="../"><img class="px" src="../svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="../sprites.html">Sprites</a><a href="../fonts.html">Fonts</a><a href="title-2.html">Screens</a><a href="menu.html" aria-current="page">Play the menu</a></nav>
+    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
   <main class="screens">
-    <div class="frame"><div id="scr" class="scr" style="width:320px;height:200px">
+    <nav class="pages seg"><a href="title-2.html">Credits</a><a aria-current="page">Menu</a><a href="controls.html">Controls</a><a href="gfx.html">The cast</a><a href="panel.html">Game panel</a></nav>
+    <div class="frame"><div id="scr" class="scr" style="width:320px;height:200px" data-play>
       <img class="bg" src="menu.svg" alt="" width="320" height="200">
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:43px;top:7px;font:7px/7px 'Supaplex Menu'">new player</div>
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:43px;top:16px;font:7px/7px 'Supaplex Menu'">delet︀e player</div>
@@ -38,28 +38,11 @@
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:188px;top:183px;font:7px/7px 'Supaplex Heading'">LEVEL-LIST</div>
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:25px;top:145px;font:6px/6px 'Supaplex Heading 6'">PLAYER</div>
       <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:14px;top:184px;font:6px/6px 'Supaplex Heading 6'">PLAYER</div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Hall of fame 1" style="left:184px;top:28px;min-width:108px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Hall of fame 2" style="left:184px;top:37px;min-width:108px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Hall of fame 3" style="left:184px;top:46px;min-width:108px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Rankings 1" style="left:8px;top:92px;min-width:130px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Rankings 2" style="left:8px;top:101px;min-width:130px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Rankings 3" style="left:8px;top:110px;min-width:130px;font:8px/8px 'Supaplex 6';color:#ee1111"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Rankings 4" style="left:8px;top:119px;min-width:130px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Rankings 5" style="left:8px;top:128px;min-width:130px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Ranking" style="left:144px;top:110px;min-width:12px;font:8px/8px 'Supaplex 6';color:#ee1111"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Current player" style="left:168px;top:93px;min-width:48px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Time" style="left:224px;top:93px;min-width:54px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Next level" style="left:288px;top:93px;min-width:18px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Message line" style="left:168px;top:127px;min-width:138px;font:8px/8px 'Supaplex 6';color:#00bb66"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Previous player" style="left:16px;top:155px;min-width:48px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Player" style="left:16px;top:164px;min-width:48px;font:8px/8px 'Supaplex 6';color:#ee1111"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Next player" style="left:16px;top:173px;min-width:48px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Previous level" style="left:144px;top:155px;min-width:162px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Level" style="left:144px;top:164px;min-width:162px;font:8px/8px 'Supaplex 6';color:#ee1111"></div>
-      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Next level" style="left:144px;top:173px;min-width:162px;font:8px/8px 'Supaplex 6';color:#7799ee"></div>
     </div></div>
     <div id="toolbar" class="toolbar"></div>
   </main>
   <script type="module" src="../screen.js"></script>
+  <script type="application/json" id="game">{"levels":[["------- WARM UP -------",19],["-------- EXIT! --------",0],["------ STONE-AGE ------",60],["------ COLLECTOR ------",60],["------ EASY DEAL ------",51],["--- DOWN THEY FALL! ---",15],["----- GO THROUGH! -----",44],["--- GET THOSE TOO!! ---",150],["------ BUG FUNNY ------",64],["- EASY COME, EASY GO! -",170],["---- RUN FOR LIFE! ----",25],["----- IGNORE THEM -----",45],["------ ANONYMOUS ------",155],["------ FALL OUT! ------",75],["---- ONE THING ... ----",95],["----- JUST DO IT! -----",45],["-------- BANG! --------",9],["------- QUICKY! -------",1],["----- CRAZY HARRY -----",64],["----- MINOTAURUS! -----",46],["------- GRAVITY -------",54],["----- UP AND DOWN -----",53],["------ BOMB TIME ------",69],["- 200 MOVING OBJECTS! -",14],["-------- YAWN! --------",123],["--------- ONE ---------",1],["----- ONCE AROUND -----",133],["----- BABA'S WORK -----",124],["--------- TNT ---------",74],["----- NO PROBLEM! -----",99],["---- TIME TO OPEN! ----",120],["---- EASY BUSINESS ----",58],["-INSIDE-OUTSIDE-INSIDE-",56],["----- EASY RIDER! -----",90],["----- NO MIRACLE! -----",9],["-------- PUSH! --------",1],["---- NEARLY BORING ----",87],["------ BOMBASTIC ------",45],["------- SIMPLE! -------",76],["--- MIND THE STONES ---",82],["----- TIME-RUNNER -----",11],["--- LITTLE PLEASURE ---",11],["--- ANTI-CLOCKWISE! ---",18],["------ TELEPATHY ------",44],["------ EASY WORK ------",144],["---- CHAMBER-MUSIC ----",34],["--- LOOKS DIFFICULT ---",40],["-- READY-STEADY-GO!! --",103],["---- FALL-FESTIVAL ----",28],["---- DON'T WORRY!! ----",42],["---- STATE OF MIND ----",45],["--- DO IT YOURSELF! ---",124],["------- FILL IN -------",17],["-- CORNER CONFUSION! --",4],["---- THE ELDRITCH! ----",81],["----- KEEP COOL!! -----",56],["--- THOSE WE LIKE!! ---",53],["---- ALL TOGETHER! ----",142],["-------- VICE- --------",60],["-------- VERSA --------",76],["---- PRE-IGNITION! ----",82],["-------- GUMBO --------",1],["---- PHIL'S FIRST! ----",143],["---- THERE YOU GO! ----",78],["----- PATHFINDER! -----",14],["---- ISLAND HOPPER ----",56],["---- GET THEM OUT! ----",135],["----- TOUGH GOING -----",12],["------ HURRY UP! ------",110],["- TOUGH BUT POSSIBLE! -",119],["----- HEAD-HUNTER -----",141],["--- COMMUNITY WORK! ---",119],["------- ONE WAY -------",84],["--- INSPIN-OUTSPIN! ---",1],["-------- NICE ---------",80],["--- ALL THE FAMILY! ---",126],["---- LITTLE DETAIL ----",107],["---- TRANSPORT IT! ----",103],["-- DON'T WASTE THEM! --",51],["-CLASSIC ENTERTAINMENT-",61],["------ DIAGONAL! ------",107],["---- TIME IS INFO! ----",142],["----- FUN-TASTIC! -----",107],["---- ALL THAT FUSS ----",41],["---- A PRO'S WORK! ----",84],["-------- CRASH --------",63],["-- SEE YOU TOMORROW! --",51],["---- FLIP AND FLOP ----",45],["----- TRIPLE FORK -----",32],["----- KNOW THAT ? -----",54],["----- VOYAGER III -----",43],["HAM AND CHEESE SANDWICH",78],["------- TIMING! -------",9],["-EINSTEIN'S FAVOURITE!-",50],["------ GOOD LUCK ------",114],["------- CRACKER -------",44],["------ GOOD JOB! ------",62],["----- MIXED SALAD -----",92],["-- JOYSTICK-HANDLING --",0],["--------- IQ! ---------",162],["------- ON-OFF! -------",87],["----- SUB-EFFECTS -----",177],["------ KNOW-HOW! ------",49],["-------- CHAOS --------",178],["---- ONE'S MISSING ----",73],["----- WATCH OUT!! -----",94],["---- FIND THE WAY! ----",82],["------- SADISM! -------",99],["- UPSTAIRS-DOWNSTAIRS -",13],["---- TROUBLE AHEAD ----",203],["------ BRAINMAN! ------",101]],"palette":["#000000","#ffffff","#eeee00","#008855","#00bb66","#bbbbbb","#ee1111","#999999","#7799ee","#5555dd","#884400","#bb0000","#ff9944","#666666","#777777","#888888"]}</script>
+  <script type="module" src="../menu.js"></script>
 </body>
 </html>

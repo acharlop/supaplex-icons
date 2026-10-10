@@ -6,9 +6,16 @@ const params = new URLSearchParams(location.search);
 const scr = document.getElementById('scr');
 const toolbar = document.getElementById('toolbar');
 const W = scr.offsetWidth;
-let zoom = Number(params.get('zoom')) || Math.min(4, Math.max(1, Math.floor((innerWidth - 40) / W)));
+const bare = params.has('bare');
+// The largest whole zoom that fits the window, less the page chrome around the screen.
+const fit = (x = 0, y = 0) => Math.max(1, Math.floor(Math.min((innerWidth - x) / W, (innerHeight - y) / scr.offsetHeight)));
+let zoom = Number(params.get('zoom')) || (bare ? fit() : Math.min(4, fit(40, 200)));
 let selected = null;
-document.body.classList.toggle('bare', params.has('bare'));
+document.body.classList.toggle('bare', bare);
+if (bare && !params.has('zoom')) {
+  document.body.classList.add('fit');
+  addEventListener('resize', () => setZoom(fit()));
+}
 
 function make(tag, props = {}, style = {}) {
   const node = Object.assign(document.createElement(tag), props);
@@ -148,9 +155,11 @@ toolbar.append(...ZOOMS.map((k) => {
   b.dataset.zoom = k;
   return b;
 }));
+// The menu, and the panel while a level runs, belong to the game rather than the editor.
+const playing = scr.dataset.play !== undefined || params.has('level') || params.has('demo');
 const slots = button('Show slots', () => slots.setAttribute('aria-pressed', document.body.classList.toggle('show-slots')));
 slots.setAttribute('aria-pressed', false);
-toolbar.append(slots, button('Download HTML', download));
+if (!playing) toolbar.append(slots, button('Download HTML', download));
 setZoom(zoom);
 
 if (scr.dataset.from) {
@@ -163,5 +172,8 @@ if (scr.dataset.from) {
   else document.fonts.ready.then(anim.play);
 }
 
-toolbar.append(make('p', { className: 'hint muted', textContent: 'Click text to edit it. Drag icons, or select one and use the arrow keys (shift: 8px) and Delete.' }));
-addIconPicker().then((picker) => toolbar.insertBefore(picker, toolbar.querySelector('.hint')), () => {});
+if (playing) toolbar.append(make('p', { className: 'hint muted', textContent: params.has('level') || params.has('demo') ? 'Click or press Escape to give up and go back to the menu.' : 'Click the buttons: they work as in the game. Type a name after new player, then Enter.' }));
+else {
+  toolbar.append(make('p', { className: 'hint muted', textContent: 'Click text to edit it. Drag icons, or select one and use the arrow keys (shift: 8px) and Delete.' }));
+  addIconPicker().then((picker) => toolbar.insertBefore(picker, toolbar.querySelector('.hint')), () => {});
+}
