@@ -1,15 +1,20 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { BACKGROUND, decode, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
+import { BACKGROUND, decode, fontFile, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
 import { filmstripSvg, pixelSvg } from './svg.mjs';
+import { ttf } from './ttf.mjs';
 
 const dist = new URL('dist/', root);
 const out = new URL('svg/pixel/', root);
+const fonts = new URL('fonts/', root);
 
 await rm(dist, { recursive: true, force: true });
 await rm(out, { recursive: true, force: true });
+await rm(fonts, { recursive: true, force: true });
+await mkdir(fonts);
 await mkdir(new URL('original/', dist), { recursive: true });
 
+const COPYRIGHT = 'Glyphs from Supaplex (c) 1991 Digital Integration / Dream Factory, freeware. Font conversion MIT.';
 const catalog = [];
 for (const sprite of sprites) {
   const { file, w, h } = sprite.source;
@@ -31,6 +36,11 @@ for (const sprite of sprites) {
         await writeFile(target, pixelSvg(BACKGROUND[sprite.kind](grid), palette, frameTitle(sprite, i), pixel, smooth));
         entry.pixel.push(`svg/pixel/${path}`);
       }
+      if (sprite.kind === 'font') {
+        const { path, family } = fontFile(sprite);
+        await writeFile(new URL(path, root), ttf(grids, { family, width: w, copyright: COPYRIGHT }));
+        entry.font = path;
+      }
     }
   }
 
@@ -40,6 +50,7 @@ for (const sprite of sprites) {
 
 await cp(new URL('site/', root), dist, { recursive: true });
 await cp(new URL('svg/', root), new URL('svg/', dist), { recursive: true });
+await cp(fonts, new URL('fonts/', dist), { recursive: true });
 await writeFile(new URL('catalog.json', dist), JSON.stringify(catalog));
 
 const files = catalog.reduce((n, s) => n + (s.pixel?.length ?? 0), 0);

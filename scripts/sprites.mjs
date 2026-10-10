@@ -28,6 +28,9 @@ export const BACKGROUND = {
 
 const glyph = (i) => 0x20 + i;
 
+// Fonts also ship as TrueType, named by glyph width.
+export const fontFile = (sprite) => ({ path: `fonts/supaplex-${sprite.source.w}.ttf`, family: `Supaplex ${sprite.source.w}` });
+
 // Path under svg/pixel/: `<id>.svg` for one frame, else `<id>/<n>.svg` (fonts: `<id>/<ascii hex>.svg`).
 export function framePath(sprite, i) {
   if (sprite.source.frames.length === 1) return `${sprite.id}.svg`;

@@ -1,10 +1,10 @@
-// Renders every pixel SVG frame in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size) and counts pixels that differ from the original.
+// Renders every pixel SVG frame and every TrueType glyph in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size) and counts pixels that differ from the original.
 import { execFile } from 'node:child_process';
 import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { decode, framePath, pixel, root, sprites } from './sprites.mjs';
+import { decode, fontFile, framePath, pixel, root, sprites } from './sprites.mjs';
 
 const run = promisify(execFile);
 const chrome = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -12,8 +12,9 @@ const PAGE_W = 2048, PAGE_H = 4096;
 const ids = process.argv.slice(2);
 const tmp = await mkdtemp(join(tmpdir(), 'supaplex-verify-'));
 
-// One job per frame per scale, shelf-packed onto screenshot-sized pages.
-const jobs = [], diffs = new Map();
+// One job per frame (or glyph) per scale, shelf-packed onto screenshot-sized pages.
+const jobs = [], diffs = new Map(), faces = [];
+const escape = (c) => ({ '<': '&lt;', '&': '&amp;' })[c] ?? c;
 for (const sprite of sprites.filter((s) => s.svg && (!ids.length || ids.includes(s.id)))) {
   const { palette, grids } = await decode(sprite);
   const rgb = palette.map((hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)));
@@ -22,7 +23,21 @@ for (const sprite of sprites.filter((s) => s.svg && (!ids.length || ids.includes
   for (let k = 1; k * w <= Math.max(pixel.exactUpTo, w); k *= 2) sizes.set(k * w, 0);
   diffs.set(sprite.id, sizes);
   grids.forEach((grid, i) => {
-    for (const W of sizes.keys()) jobs.push({ id: sprite.id, src: new URL(`svg/pixel/${framePath(sprite, i)}`, root), grid, rgb, k: W / w, W, H: (W / w) * h });
+    const src = new URL(`svg/pixel/${framePath(sprite, i)}`, root);
+    for (const W of sizes.keys()) jobs.push({ id: sprite.id, k: W / w, W, H: (W / w) * h, grid, rgb, tag: (pos) => `<img src="${src}" width="${W}" height="${(W / w) * h}" style="${pos}">` });
+  });
+  if (sprite.kind !== 'font') continue;
+  // Text in the font, one em (7 rows plus a blank descender row) per glyph.
+  const { path, family } = fontFile(sprite);
+  faces.push(`@font-face{font-family:'${family}';src:url(${new URL(path, root)})}`);
+  diffs.set(path, new Map(sizes));
+  grids.forEach((grid, i) => {
+    const em = [...grid, grid[0].map(() => 0)];
+    for (const W of sizes.keys()) {
+      const k = W / w;
+      const char = escape(String.fromCharCode(0x20 + i));
+      jobs.push({ id: path, k, W, H: k * 8, grid: em, rgb, tag: (pos) => `<span style="${pos};font:${k * 8}px/${k * 8}px '${family}';-webkit-font-smoothing:antialiased;color:${palette[1]}">${char}</span>` });
+    }
   });
 }
 
@@ -40,9 +55,9 @@ for (const job of jobs.sort((a, b) => b.H - a.H || b.W - a.W)) {
 
 async function check(page, n) {
   const html = join(tmp, `page${n}.html`), png = join(tmp, `shot${n}.png`);
-  const imgs = page.jobs.map((j) => `<img src="${j.src}" width="${j.W}" height="${j.H}" style="position:absolute;left:${j.x}px;top:${j.y}px">`);
+  const tags = page.jobs.map((j) => j.tag(`position:absolute;left:${j.x}px;top:${j.y}px`));
   // Black page: transparent background in the SVG must show through as the original black.
-  await writeFile(html, `<body style="margin:0;background:#000">${imgs.join('')}`);
+  await writeFile(html, `<style>${faces.join('')}</style><body style="margin:0;background:#000">${tags.join('')}`);
   await run(chrome, ['--headless', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
     `--window-size=${PAGE_W},${page.height}`, `--screenshot=${png}`, '--allow-file-access-from-files', `file://${html}`]);
   const { stdout: shot } = await run('ffmpeg', ['-loglevel', 'error', '-i', png, '-vf', `crop=${PAGE_W}:${page.height}:0:0`, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'],
