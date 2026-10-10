@@ -1,6 +1,6 @@
 # Supaplex SVG
 
-Every Supaplex sprite, font and screen, redrawn as SVG. Two versions each: **pixel** (exact original up to 128px, corners softened above) and **smooth** (hand-drawn vector).
+Every Supaplex sprite, font and screen, redrawn as SVG. Two versions each: **pixel** (exact original up to 256px, corners softened above) and **smooth** (hand-drawn vector).
 
 **Live:** https://acharlop.github.io/supaplex-icons/
 
@@ -12,7 +12,7 @@ npm run dev   # build + serve on http://localhost:4173
 
 Pixel softening is set at the top of `sprites.json`:
 
-- `exactUpTo`: pixel-identical to the original up to this many px wide (default 128).
+- `exactUpTo`: pixel-identical to the original up to this many px wide (default 256).
 - `cornerCut`: how much corners round above that, in original pixels (default 0.25; `0` = never round).
 
 <details><summary>For AI</summary>
