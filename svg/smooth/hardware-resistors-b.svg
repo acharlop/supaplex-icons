@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware resistors B</title>
+  <defs>
+    <g id="r">
+      <rect x="5" y="2" width="8" height="3" rx="1" fill="#666666"/>
+      <g fill="none" stroke-linecap="round">
+        <path d="M2.5 3.5H15.5" stroke="#666666"/>
+        <path d="M1.5 2.5H14.5" stroke="#bbbbbb"/>
+      </g>
+      <rect x="4" y="1" width="8" height="3" rx="1" fill="#ff9944"/>
+      <path d="M4 3V2A1 1 0 0 1 5 1H11A1 1 0 0 1 12 2V3Z" fill="#eeee00"/>
+      <ellipse cx="5.1" cy="1.75" rx=".6" ry=".35" fill="#ffffff"/>
+      <g fill="none">
+        <path d="M7.5 1V3" stroke="#7799ee"/>
+        <path d="M7.5 3V4" stroke="#5555dd"/>
+        <path d="M8.5 1V3" stroke="#ff9944"/>
+        <path d="M8.5 3V4" stroke="#ee1111"/>
+      </g>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <use href="#r"/>
+  <use href="#r" y="5"/>
+  <use href="#r" y="10"/>
+</svg>

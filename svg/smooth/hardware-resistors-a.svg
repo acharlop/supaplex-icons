@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware resistors A</title>
+  <defs>
+    <g id="w">
+      <rect x="5" y="2" width="8" height="3" rx="1" fill="#666666"/>
+      <g fill="none" stroke-linecap="round">
+        <path d="M2.5 3.5H15.5" stroke="#666666"/>
+        <path d="M1.5 2.5H14.5" stroke="#bbbbbb"/>
+      </g>
+    </g>
+    <path id="t" d="M4 3V2A1 1 0 0 1 5 1H11A1 1 0 0 1 12 2V3Z"/>
+    <g id="g" fill="none">
+      <path d="M8.5 1V3" stroke="#00bb66"/>
+      <path d="M8.5 3V4" stroke="#008855"/>
+      <path d="M9.5 1V3" stroke="#eeee00"/>
+      <path d="M9.5 3V4" stroke="#ff9944"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <use href="#w"/>
+  <rect x="4" y="1" width="8" height="3" rx="1" fill="#bb0000"/>
+  <use href="#t" fill="#ee1111"/>
+  <ellipse cx="5.1" cy="1.75" rx=".6" ry=".35" fill="#888888"/>
+  <g fill="none">
+    <path d="M7.5 1V3" stroke="#7799ee"/>
+    <path d="M7.5 3V4" stroke="#5555dd"/>
+  </g>
+  <use href="#g"/>
+  <use href="#w" y="5"/>
+  <rect x="4" y="6" width="8" height="3" rx="1" fill="#ff9944"/>
+  <use href="#t" y="5" fill="#eeee00"/>
+  <ellipse cx="5.1" cy="6.75" rx=".6" ry=".35" fill="#ffffff"/>
+  <g fill="none">
+    <path d="M7.5 6V8" stroke="#7799ee"/>
+    <path d="M7.5 8V9" stroke="#5555dd"/>
+    <path d="M8.5 6V8" stroke="#ff9944"/>
+    <path d="M8.5 8V9" stroke="#ee1111"/>
+  </g>
+  <use href="#w" y="10"/>
+  <rect x="4" y="11" width="8" height="3" rx="1" fill="#5555dd"/>
+  <use href="#t" y="10" fill="#7799ee"/>
+  <ellipse cx="5.1" cy="11.75" rx=".6" ry=".35" fill="#888888"/>
+  <g fill="none">
+    <path d="M7.5 11V13" stroke="#ee1111"/>
+    <path d="M7.5 13V14" stroke="#bb0000"/>
+  </g>
+  <use href="#g" y="10"/>
+</svg>

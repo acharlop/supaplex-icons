@@ -17,7 +17,8 @@
         "frames": [
           [0, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "zonk",
@@ -31,7 +32,8 @@
         "frames": [
           [16, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "base",
@@ -45,7 +47,8 @@
         "frames": [
           [32, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "murphy",
@@ -74,7 +77,8 @@
         "frames": [
           [64, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "ram-chip",
@@ -88,7 +92,8 @@
         "frames": [
           [80, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware",
@@ -102,7 +107,8 @@
         "frames": [
           [96, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "exit",
@@ -116,7 +122,8 @@
         "frames": [
           [112, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "orange-disk",
@@ -130,7 +137,8 @@
         "frames": [
           [128, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-right",
@@ -264,7 +272,8 @@
         "frames": [
           [272, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "yellow-disk",
@@ -278,7 +287,8 @@
         "frames": [
           [288, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "terminal",
@@ -292,7 +302,8 @@
         "frames": [
           [304, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "red-disk",
@@ -306,7 +317,8 @@
         "frames": [
           [320, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-vertical",
@@ -365,7 +377,8 @@
         "frames": [
           [384, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "bug",
@@ -379,7 +392,8 @@
         "frames": [
           [400, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "ram-chip-left",
@@ -393,7 +407,8 @@
         "frames": [
           [416, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "ram-chip-right",
@@ -407,7 +422,8 @@
         "frames": [
           [432, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-circuit",
@@ -421,7 +437,8 @@
         "frames": [
           [448, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-lamp-green",
@@ -435,7 +452,8 @@
         "frames": [
           [464, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-lamp-blue",
@@ -449,7 +467,8 @@
         "frames": [
           [480, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-lamp-red",
@@ -463,7 +482,8 @@
         "frames": [
           [496, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-stripes",
@@ -477,7 +497,8 @@
         "frames": [
           [512, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-components",
@@ -491,7 +512,8 @@
         "frames": [
           [528, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-capacitor",
@@ -505,7 +527,8 @@
         "frames": [
           [544, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-resistors-a",
@@ -519,7 +542,8 @@
         "frames": [
           [560, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-resistors-vertical",
@@ -533,7 +557,8 @@
         "frames": [
           [576, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "hardware-resistors-b",
@@ -547,7 +572,8 @@
         "frames": [
           [592, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "ram-chip-top",
@@ -561,7 +587,8 @@
         "frames": [
           [608, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "ram-chip-bottom",
@@ -575,7 +602,8 @@
         "frames": [
           [624, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "zonk-roll-left",

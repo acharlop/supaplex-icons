@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware components</title>
+  <defs>
+    <g id="s">
+      <circle r="1" fill="#666666"/>
+      <circle cx="-.2" cy="-.2" r=".8" fill="#777777"/>
+      <circle cx="-.4" cy=".05" r=".55" fill="#bbbbbb"/>
+      <circle cx="-.4" cy="-.4" r=".45" fill="#ffffff"/>
+    </g>
+    <g id="c">
+      <rect x="5" y="2" width="2" height="7" rx=".5" fill="#666666"/>
+      <path d="M2 3.15h1.2v.7H2zM2 5.15h1.2v.7H2z" fill="#999999"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <path d="M1.5 3V12.5H2.5M14.5 3V12" fill="none" stroke="#00bb66"/>
+  <use href="#c"/>
+  <path d="M4 1H5V8H4A1 1 0 0 1 3 7V2A1 1 0 0 1 4 1Z" fill="#5555dd"/>
+  <rect x="3" y="2" width="1" height="5" fill="#7799ee"/>
+  <use href="#c" x="5"/>
+  <rect x="8" y="1" width="1" height="7" fill="#666666"/>
+  <path d="M9 1H10V8H9A1 1 0 0 1 8 7V2A1 1 0 0 1 9 1Z" fill="#bb0000"/>
+  <rect x="8" y="2" width="1" height="5" fill="#ee1111"/>
+  <use href="#s" x="13" y="3"/>
+  <use href="#s" x="13" y="7"/>
+  <rect x="5" y="11" width="8" height="3" rx="1" fill="#666666"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M3.5 12.5H14.5" stroke="#666666"/>
+    <path d="M2.5 11.5H13.5" stroke="#bbbbbb"/>
+  </g>
+  <rect x="4" y="10" width="8" height="3" rx="1" fill="#ff9944"/>
+  <path d="M4 12V11A1 1 0 0 1 5 10H11A1 1 0 0 1 12 11V12Z" fill="#eeee00"/>
+  <ellipse cx="5.1" cy="10.75" rx=".6" ry=".35" fill="#ffffff"/>
+  <g fill="none">
+    <path d="M7.5 10V12" stroke="#7799ee"/>
+    <path d="M7.5 12V13" stroke="#5555dd"/>
+    <path d="M8.5 10V12" stroke="#ff9944"/>
+    <path d="M8.5 12V13" stroke="#ee1111"/>
+  </g>
+</svg>

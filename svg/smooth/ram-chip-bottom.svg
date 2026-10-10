@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>RAM chip bottom</title>
+  <g transform="matrix(0 1 1 0 0 0)">
+    <g fill="none" stroke-linecap="round">
+      <path d="M1.5 0.5V1M3.5 0.5V1M5.5 0.5V1M7.5 0.5V1M9.5 0.5V1M11.5 0.5V1M13.5 0.5V1" stroke="#ffffff"/>
+      <path d="M1.5 15.5V15M3.5 15.5V15M5.5 15.5V15M7.5 15.5V15M9.5 15.5V15M11.5 15.5V15M13.5 15.5V15" stroke="#ff9944"/>
+      <path d="M1.5 1V2.2M3.5 1V2.2M5.5 1V2.2M7.5 1V2.2M9.5 1V2.2M11.5 1V2.2M13.5 1V2.2M1.5 15V13.8M3.5 15V13.8M5.5 15V13.8M7.5 15V13.8M9.5 15V13.8M11.5 15V13.8M13.5 15V13.8" stroke="#eeee00" stroke-linecap="butt"/>
+    </g>
+    <rect y="2" width="16" height="12" fill="#777777"/>
+    <path d="M0 2H16L15 3H0Z" fill="#888888"/>
+    <path d="M16 2V14H0V13H15V3Z" fill="#666666"/>
+    <path d="M2.1 6.6A1.4 1.4 0 0 0 2.1 9.4" fill="none" stroke="#888888" stroke-width="0.8"/>
+    <circle cx="7" cy="8" r="1" fill="#666666"/>
+    <path d="M8 8A1 1 0 0 1 7 9A1.4 1.4 0 0 0 8 8Z" fill="#888888"/>
+  </g>
+</svg>

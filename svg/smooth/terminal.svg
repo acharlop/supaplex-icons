@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Terminal</title>
+  <defs>
+    <g id="k">
+      <rect width="2" height="2" rx="0.6" fill="#000000"/>
+      <rect width="1.65" height="1.65" rx="0.5" fill="#666666"/>
+      <rect width="1.15" height="1.15" rx="0.4" fill="#999999"/>
+    </g>
+    <g id="v">
+      <rect x="13" width="2" height="0.9" rx="0.45" fill="#666666"/>
+      <rect x="13" width="1.2" height="0.9" rx="0.45" fill="#bbbbbb"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#888888"/>
+  <path d="M0 0H16L15 1H1V15L0 16Z" fill="#bbbbbb"/>
+  <path d="M16 0V16H0L1 15H15V1Z" fill="#666666"/>
+  <path d="M1 1H12L11 2H2V10L1 11Z" fill="#666666"/>
+  <path d="M12 1V11H1L2 10H11V2Z" fill="#999999"/>
+  <rect x="2" y="2" width="9" height="8" rx="0.5" fill="#000000"/>
+  <path d="M3.5 3.5h0M5.5 3.5h0M8.5 3.5h0M3.5 5.5h2M7.5 5.5h1M3.5 7.5v1M5.5 7.5v1M7.5 7.5h0M9.5 7.5v1" stroke="#00bb66" stroke-linecap="round"/>
+  <use href="#v" y="2.05"/>
+  <use href="#v" y="4.05"/>
+  <use href="#v" y="6.05"/>
+  <use href="#v" y="8.05"/>
+  <use href="#v" y="10.05"/>
+  <use href="#k" x="2" y="12"/>
+  <use href="#k" x="5" y="12"/>
+  <use href="#k" x="8" y="12"/>
+  <rect x="11" y="12" width="1" height="2" rx="0.5" fill="#666666"/>
+  <circle cx="11.5" cy="12.5" r="0.5" fill="#eeee00"/>
+  <rect x="13" y="12" width="1" height="2" rx="0.5" fill="#666666"/>
+  <circle cx="13.5" cy="12.5" r="0.5" fill="#ee1111"/>
+</svg>

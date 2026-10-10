@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Infotron</title>
+  <defs>
+    <g id="e">
+      <circle r="1" fill="#666666"/>
+      <circle cx="-0.15" cy="-0.15" r="0.75" fill="#888888"/>
+      <circle cx="-0.35" cy="-0.35" r="0.4" fill="#ffffff"/>
+    </g>
+  </defs>
+  <g fill="none">
+    <path d="M3.9 8.5A3.5 3.5 0 1 0 4.51 15.45" stroke="#666666"/>
+    <path d="M3.9 8.5A3.5 3.5 0 0 0 1.65 14.68" stroke="#999999"/>
+    <path d="M3.29 8.55A3.5 3.5 0 0 0 0.52 12.91" stroke="#bbbbbb"/>
+    <path d="M1.89 9.13A3.5 3.5 0 0 0 0.61 10.8" stroke="#ffffff"/>
+    <path d="M12.1 8.5A3.5 3.5 0 1 1 10.62 15.17" stroke="#bb0000"/>
+    <path d="M12.1 8.5A3.5 3.5 0 0 1 15.27 13.48" stroke="#ee1111"/>
+    <g stroke-linecap="round">
+      <path d="M6 6.3Q7.3 9 8 12" stroke="#884400"/>
+      <path d="M8 12L10.6 15.2" stroke="#bb0000"/>
+      <path d="M10 6.3Q8.9 9.2 8 12" stroke="#7799ee"/>
+      <path d="M8 12L4.5 15.45" stroke="#5555dd"/>
+    </g>
+    <path d="M3.3 8.5H6" stroke="#eeee00"/>
+    <path d="M6 8.5H11" stroke="#ff9944"/>
+    <path d="M11 8.5H12.1" stroke="#ee1111"/>
+    <path d="M5.99 6.32A3.5 3.2 0 1 1 10.01 6.32" stroke="#008855"/>
+    <path d="M8 0.5A3.5 3.2 0 0 1 11.17 5.05" stroke="#00bb66"/>
+    <path d="M5.51 2.9A2.65 2.35 0 0 1 7.09 1.49" stroke="#666666" stroke-width="0.7" stroke-linecap="round"/>
+  </g>
+  <use href="#e" x="8" y="4"/>
+  <use href="#e" x="4" y="12"/>
+  <use href="#e" x="12.3" y="12"/>
+</svg>

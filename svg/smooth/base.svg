@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Base</title>
+  <defs>
+    <g id="p">
+      <circle r="1" fill="#666666"/>
+      <circle cx="-0.15" cy="-0.15" r="0.75" fill="#bbbbbb"/>
+      <circle cx="-0.35" cy="-0.35" r="0.35" fill="#ffffff"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <g fill="none" stroke="#00bb66" stroke-linejoin="round">
+    <circle cx="13" cy="3" r="1.5"/>
+    <circle cx="3" cy="13" r="1.5"/>
+    <circle cx="13" cy="13" r="1.5"/>
+    <path d="M-1 1.5H0.5V0.5H6.5V-1M13 1.5H17M12.5 -1V1.6M12.5 17V14.4M-1 12.5H1.6M14.4 12.5H17M6.5 17V15.5H7.5V14"/>
+    <path d="M11.5 2.5H2.6Q1.5 2.5 1.5 3.6V13M13 4.5H4.6Q3.5 4.5 3.5 5.6V7.4Q3.5 8.5 4.6 8.5H11.9Q13 8.5 13 9.6V11.5"/>
+    <path d="M4.5 13H11.5" stroke-width="2"/>
+    <path d="M13 4.5V5.9" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <rect x="7" y="7" width="2" height="3" rx="0.6" fill="#00bb66"/>
+  <use href="#p" x="13" y="3"/>
+  <use href="#p" x="3" y="13"/>
+  <use href="#p" x="13" y="13"/>
+</svg>

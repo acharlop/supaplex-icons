@@ -19,5 +19,5 @@ Completion: `npm run verify` exits 0 for all `svg: true` sprites, and a second `
 
 - Edge-touching black becomes transparent; enclosed black stays. Verify renders on a black page so both read as the original black.
 - `verify` needs Chrome (`CHROME=/path` to override) and `ffmpeg`. `rsvg-convert -w 256 <svg> -o x.png` is the quick way to eyeball a render.
-- Smooth art is a matter of taste: show Avi a pixel-vs-smooth side-by-side before calling it done.
+- Smooth art never gates a batch: Avi only judges the 256px exact match. Merge once verify passes.
 - Subagents drawing smooth art in parallel: give each the same style brief and the `npm run grid` output, split by unique design, and keep shared families (e.g. a sprite and its rotations) in one agent.

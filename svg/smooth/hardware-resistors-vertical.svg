@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware resistors vertical</title>
+  <defs>
+    <g id="r">
+      <rect x="5" y="2" width="8" height="3" rx="1" fill="#666666"/>
+      <g fill="none" stroke-linecap="round">
+        <path d="M2.5 3.5H15.5" stroke="#666666"/>
+        <path d="M1.5 2.5H14.5" stroke="#999999"/>
+        <path d="M1.5 2.5H1.7" stroke="#bbbbbb"/>
+      </g>
+      <rect x="4" y="1" width="8" height="3" rx="1" fill="#bb0000"/>
+      <path d="M4 3V2A1 1 0 0 1 5 1H11A1 1 0 0 1 12 2V3Z" fill="#ee1111"/>
+      <ellipse cx="5.1" cy="1.75" rx=".6" ry=".35" fill="#888888"/>
+      <g fill="none">
+        <path d="M7.5 1V3" stroke="#7799ee"/>
+        <path d="M7.5 3V4" stroke="#5555dd"/>
+        <path d="M8.5 1V3" stroke="#00bb66"/>
+        <path d="M8.5 3V4" stroke="#008855"/>
+        <path d="M9.5 1V3" stroke="#eeee00"/>
+        <path d="M9.5 3V4" stroke="#ff9944"/>
+      </g>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <use href="#r" transform="matrix(0 1 1 0 0 0)"/>
+  <use href="#r" transform="matrix(0 1 1 0 5 0)"/>
+  <use href="#r" transform="matrix(0 1 1 0 10 0)"/>
+</svg>

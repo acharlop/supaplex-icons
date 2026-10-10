@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Exit</title>
+  <defs>
+    <path id="E" d="M3 3H13V5H5V7H11V9H5V11H13V13H3Z"/>
+  </defs>
+  <rect width="16" height="16" fill="#ff9944"/>
+  <path d="M0 0H16L15 1H1V15L0 16Z" fill="#eeee00"/>
+  <path d="M16 0V16H0L1 15H15V1Z" fill="#ee1111"/>
+  <use href="#E" x="1" y="1" fill="#000000"/>
+  <use href="#E" fill="#ffffff"/>
+</svg>

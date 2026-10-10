@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Orange disk</title>
+  <path d="M0 0H15L16 1V16H0Z" fill="#5555dd"/>
+  <circle cx="1.5" cy="1.5" r="0.5" fill="#000000"/>
+  <path d="M3 0H14V6.6Q14 7 13.6 7H3.4Q3 7 3 6.6Z" fill="#ffffff"/>
+  <rect x="3" width="11" height="2" fill="#ff9944"/>
+  <path d="M4.4 10H12.6Q13 10 13 10.4V16H4V10.4Q4 10 4.4 10Z" fill="#999999"/>
+  <rect x="10" y="11" width="2" height="4" rx="0.3" fill="#5555dd"/>
+</svg>

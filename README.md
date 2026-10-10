@@ -4,7 +4,7 @@ Every Supaplex sprite, font and screen as SVG. **Goal: pixel-exact match of the 
 
 **Live:** https://acharlop.github.io/supaplex-icons/
 
-Status: setup done; Murphy and all ports (incl. gravity) done. Rest listed in [`sprites.json`](sprites.json) and on the site.
+Status: every static tile done (pixel-exact; smooth art for all but Space). Next: animations, fonts, screens; listed in [`sprites.json`](sprites.json) and on the site.
 
 ```sh
 npm run dev      # build + serve on http://localhost:4173

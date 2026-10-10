@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware capacitor</title>
+  <defs>
+    <g id="s">
+      <circle r="1" fill="#666666"/>
+      <circle cx="-.2" cy="-.2" r=".8" fill="#777777"/>
+      <circle cx="-.4" cy=".05" r=".55" fill="#bbbbbb"/>
+      <circle cx="-.4" cy="-.4" r=".45" fill="#ffffff"/>
+    </g>
+    <g id="l">
+      <path d="M2 8h2v1H2z" fill="#666666"/>
+      <path d="M4 7.5H2.2Q1.5 7.5 1.5 8.2V9" fill="none" stroke="#999999"/>
+      <path d="M2.6 7.2H2.2Q1.2 7.2 1.2 8.2" fill="none" stroke="#bbbbbb" stroke-width=".4"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <g fill="none" stroke="#00bb66">
+    <path d="M1.5 13V1.5H14.5V3M8.5 3.5H3.5V4.5H1.5"/>
+    <path d="M1 13H3"/>
+  </g>
+  <rect x="1" y="12" width="2" height="2" fill="#00bb66"/>
+  <rect x="8" y="2" width="7" height="2" fill="#00bb66"/>
+  <use href="#s" x="10" y="3"/>
+  <use href="#s" x="13" y="3"/>
+  <rect x="5" y="7" width="11" height="8" rx="1.5" fill="#666666"/>
+  <rect x="4" y="5" width="10" height="2" rx=".5" fill="#666666"/>
+  <use href="#l"/>
+  <use href="#l" y="3"/>
+  <rect x="4" y="5" width="10" height="8" rx="1" fill="#884400"/>
+  <rect x="4" y="5" width="10" height="7" rx="1" fill="#bb0000"/>
+  <rect x="4" y="6" width="10" height="4" fill="#ee1111"/>
+  <rect x="4" y="7" width="9" height="1" rx=".5" fill="#ff9944"/>
+  <rect x="6" y="5" width="1" height="8" fill="#884400"/>
+  <rect x="6" y="6" width="1" height="4" fill="#bb0000"/>
+</svg>

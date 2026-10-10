@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware</title>
+  <rect width="16" height="16" fill="#999999"/>
+  <path d="M16 0V16L12 11V5Z" fill="#666666"/>
+  <path d="M0 0H16L12 5H4Z" fill="#bbbbbb"/>
+  <path d="M0 16H16L12 11H4Z" fill="#777777"/>
+  <rect x="4" y="5" width="8" height="6" fill="#666666"/>
+  <path d="M12 5L9 8L12 11Z" fill="#999999"/>
+  <path d="M4 5H12L9 8H7Z" fill="#777777"/>
+  <path d="M4 11H12L9 8H7Z" fill="#bbbbbb"/>
+</svg>

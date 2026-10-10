@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware circuit</title>
+  <defs>
+    <g id="s">
+      <circle r="1" fill="#666666"/>
+      <circle cx="-.2" cy="-.2" r=".8" fill="#777777"/>
+      <circle cx="-.4" cy=".05" r=".55" fill="#bbbbbb"/>
+      <circle cx="-.4" cy="-.4" r=".45" fill="#ffffff"/>
+    </g>
+  </defs>
+  <rect width="16" height="16" fill="#008855"/>
+  <g fill="none" stroke="#00bb66" stroke-linejoin="round">
+    <path d="M11 2.5H9.5V8.2L8.5 9.2V10.3L7.8 11M9.5 5.5H11M13.5 4.5H14.5M13.5 7.5H14.5M2.5 7V8.5H1.5V14.5H11.5"/>
+    <path d="M2 9V13M3 12H8" stroke-width="2"/>
+  </g>
+  <circle cx="5.4" cy="5.5" r="3.5" fill="#666666"/>
+  <circle cx="4.5" cy="4.5" r="3.5" fill="#7799ee"/>
+  <circle cx="4.5" cy="4.5" r="2.8" fill="#888888"/>
+  <circle cx="3.5" cy="3.5" r=".6" fill="#999999"/>
+  <rect x="11" y="1" width="3" height="2" rx=".6" fill="#ff9944"/>
+  <rect x="11" y="1" width="3" height="1.2" rx=".6" fill="#eeee00"/>
+  <rect x="11" y="4" width="3" height="2" rx=".6" fill="#bb0000"/>
+  <rect x="11" y="4" width="3" height="1.2" rx=".6" fill="#ee1111"/>
+  <rect x="10" y="7" width="4" height="7" rx=".6" fill="#666666"/>
+  <rect x="10" y="7" width="3.3" height="6.3" rx=".6" fill="#999999"/>
+  <rect x="11" y="8" width="2" height="5" rx=".3" fill="#888888"/>
+  <circle cx="12.5" cy="9.5" r=".4" fill="#999999"/>
+  <circle cx="12.5" cy="11.5" r=".4" fill="#999999"/>
+  <use href="#s" x="3" y="12"/>
+  <use href="#s" x="8" y="12"/>
+</svg>

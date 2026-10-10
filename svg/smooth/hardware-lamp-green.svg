@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware green lamp</title>
+  <rect width="16" height="16" fill="#666666"/>
+  <path d="M0 0H16L14 2H2V14L0 16Z" fill="#999999"/>
+  <rect x="2" y="2" width="12" height="12" fill="#777777"/>
+  <circle cx="8.3" cy="8.3" r="3.75" fill="#666666"/>
+  <circle cx="7.6" cy="7.6" r="3.55" fill="#008855"/>
+  <circle cx="8.35" cy="8.2" r="2.55" fill="#00bb66"/>
+  <circle cx="5.6" cy="5.6" r="0.65" fill="#bbbbbb"/>
+</svg>

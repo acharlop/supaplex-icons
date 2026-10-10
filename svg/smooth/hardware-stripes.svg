@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Hardware stripes</title>
+  <rect width="16" height="16" fill="#666666"/>
+  <path d="M0 0H16L14 2H2V14L0 16Z" fill="#999999"/>
+  <rect x="2" y="2" width="12" height="12" fill="#000000"/>
+  <path d="M2 2H3.5L2 3.5ZM6.5 2H9.5L2 9.5V6.5ZM12.5 2H14V3.5L3.5 14H2V12.5ZM14 6.5V9.5L9.5 14H6.5ZM14 12.5V14H12.5Z" fill="#eeee00"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Zonk</title>
+  <path d="M0.06 7A8 8 0 0 1 15.94 7ZM0.06 9A8 8 0 0 0 15.94 9Z" fill="#666666"/>
+  <path d="M0.92 7A6.6 6.6 0 0 1 14.08 7ZM1.07 9A6.6 6.6 0 0 0 13.93 9Z" fill="#777777"/>
+  <circle cx="7.2" cy="7.2" r="5.2" fill="#888888"/>
+  <ellipse cx="6.5" cy="6" rx="3.5" ry="3" fill="#999999"/>
+  <ellipse cx="6.5" cy="5.3" rx="1.6" ry="0.9" fill="#bbbbbb"/>
+  <rect x="2" y="7" width="12" height="2" fill="#884400"/>
+  <rect x="3" y="7" width="10" height="2" fill="#bb0000"/>
+  <rect x="4" y="7" width="8" height="2" fill="#ee1111"/>
+  <rect x="5" y="7" width="6" height="2" fill="#ff9944"/>
+  <rect x="7" y="7" width="2" height="2" fill="#eeee00"/>
+</svg>
