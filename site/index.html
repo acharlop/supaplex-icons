@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supaplex SVG</title>
+  <meta name="description" content="Every Supaplex sprite recreated as SVG, pixel and smooth.">
+  <link rel="icon" href="svg/smooth/murphy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>Supaplex SVG</h1>
+    <p id="progress" class="muted"></p>
+    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+  </header>
+
+  <main class="layout">
+    <section class="detail" aria-live="polite">
+      <h2 id="detail-name"></h2>
+      <p id="detail-meta" class="muted"></p>
+      <div class="sizes" role="group" aria-label="Preview size"></div>
+      <div class="stages">
+        <figure><div class="stage" id="stage-original"></div><figcaption>Original</figcaption></figure>
+        <figure><div class="stage" id="stage-pixel"></div><figcaption>Pixel <a id="dl-pixel" download>svg</a></figcaption></figure>
+        <figure><div class="stage" id="stage-smooth"></div><figcaption>Smooth <a id="dl-smooth" download>svg</a></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="list">
+      <nav class="tabs" role="tablist" aria-label="Sprite kind"></nav>
+      <ul id="grid" class="grid"></ul>
+    </section>
+  </main>
+
+  <footer class="muted">
+    Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,868 @@
+{
+  "sprites": [
+    {
+      "id": "space",
+      "name": "Space",
+      "kind": "tile",
+      "tile": 0,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 0]
+        ]
+      }
+    },
+    {
+      "id": "zonk",
+      "name": "Zonk",
+      "kind": "tile",
+      "tile": 1,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [16, 0]
+        ]
+      }
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "kind": "tile",
+      "tile": 2,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [32, 0]
+        ]
+      }
+    },
+    {
+      "id": "murphy",
+      "name": "Murphy",
+      "kind": "tile",
+      "tile": 3,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [48, 0]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "infotron",
+      "name": "Infotron",
+      "kind": "tile",
+      "tile": 4,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [64, 0]
+        ]
+      }
+    },
+    {
+      "id": "ram-chip",
+      "name": "RAM chip",
+      "kind": "tile",
+      "tile": 5,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [80, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware",
+      "kind": "tile",
+      "tile": 6,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [96, 0]
+        ]
+      }
+    },
+    {
+      "id": "exit",
+      "name": "Exit",
+      "kind": "tile",
+      "tile": 7,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [112, 0]
+        ]
+      }
+    },
+    {
+      "id": "orange-disk",
+      "name": "Orange disk",
+      "kind": "tile",
+      "tile": 8,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [128, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-right",
+      "name": "Port right",
+      "kind": "tile",
+      "tile": 9,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [144, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-down",
+      "name": "Port down",
+      "kind": "tile",
+      "tile": 10,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [160, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-left",
+      "name": "Port left",
+      "kind": "tile",
+      "tile": 11,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [176, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-up",
+      "name": "Port up",
+      "kind": "tile",
+      "tile": 12,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [192, 0]
+        ]
+      }
+    },
+    {
+      "id": "gravity-port-right",
+      "name": "Gravity port right",
+      "kind": "tile",
+      "tile": 13,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [208, 0]
+        ]
+      }
+    },
+    {
+      "id": "gravity-port-down",
+      "name": "Gravity port down",
+      "kind": "tile",
+      "tile": 14,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [224, 0]
+        ]
+      }
+    },
+    {
+      "id": "gravity-port-left",
+      "name": "Gravity port left",
+      "kind": "tile",
+      "tile": 15,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [240, 0]
+        ]
+      }
+    },
+    {
+      "id": "gravity-port-up",
+      "name": "Gravity port up",
+      "kind": "tile",
+      "tile": 16,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [256, 0]
+        ]
+      }
+    },
+    {
+      "id": "snik-snak",
+      "name": "Snik Snak",
+      "kind": "tile",
+      "tile": 17,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [272, 0]
+        ]
+      }
+    },
+    {
+      "id": "yellow-disk",
+      "name": "Yellow disk",
+      "kind": "tile",
+      "tile": 18,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [288, 0]
+        ]
+      }
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "kind": "tile",
+      "tile": 19,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [304, 0]
+        ]
+      }
+    },
+    {
+      "id": "red-disk",
+      "name": "Red disk",
+      "kind": "tile",
+      "tile": 20,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [320, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-vertical",
+      "name": "Port vertical",
+      "kind": "tile",
+      "tile": 21,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [336, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-horizontal",
+      "name": "Port horizontal",
+      "kind": "tile",
+      "tile": 22,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [352, 0]
+        ]
+      }
+    },
+    {
+      "id": "port-cross",
+      "name": "Port 4-way",
+      "kind": "tile",
+      "tile": 23,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [368, 0]
+        ]
+      }
+    },
+    {
+      "id": "electron",
+      "name": "Electron",
+      "kind": "tile",
+      "tile": 24,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [384, 0]
+        ]
+      }
+    },
+    {
+      "id": "bug",
+      "name": "Bug",
+      "kind": "tile",
+      "tile": 25,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [400, 0]
+        ]
+      }
+    },
+    {
+      "id": "ram-chip-left",
+      "name": "RAM chip left",
+      "kind": "tile",
+      "tile": 26,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [416, 0]
+        ]
+      }
+    },
+    {
+      "id": "ram-chip-right",
+      "name": "RAM chip right",
+      "kind": "tile",
+      "tile": 27,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [432, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-circuit",
+      "name": "Hardware circuit",
+      "kind": "tile",
+      "tile": 28,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [448, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-lamp-green",
+      "name": "Hardware green lamp",
+      "kind": "tile",
+      "tile": 29,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [464, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-lamp-blue",
+      "name": "Hardware blue lamp",
+      "kind": "tile",
+      "tile": 30,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [480, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-lamp-red",
+      "name": "Hardware red lamp",
+      "kind": "tile",
+      "tile": 31,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [496, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-stripes",
+      "name": "Hardware stripes",
+      "kind": "tile",
+      "tile": 32,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [512, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-components",
+      "name": "Hardware components",
+      "kind": "tile",
+      "tile": 33,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [528, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-capacitor",
+      "name": "Hardware capacitor",
+      "kind": "tile",
+      "tile": 34,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [544, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-resistors-a",
+      "name": "Hardware resistors A",
+      "kind": "tile",
+      "tile": 35,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [560, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-resistors-vertical",
+      "name": "Hardware resistors vertical",
+      "kind": "tile",
+      "tile": 36,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [576, 0]
+        ]
+      }
+    },
+    {
+      "id": "hardware-resistors-b",
+      "name": "Hardware resistors B",
+      "kind": "tile",
+      "tile": 37,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [592, 0]
+        ]
+      }
+    },
+    {
+      "id": "ram-chip-top",
+      "name": "RAM chip top",
+      "kind": "tile",
+      "tile": 38,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [608, 0]
+        ]
+      }
+    },
+    {
+      "id": "ram-chip-bottom",
+      "name": "RAM chip bottom",
+      "kind": "tile",
+      "tile": 39,
+      "source": {
+        "file": "FIXED.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [624, 0]
+        ]
+      }
+    },
+    {
+      "id": "zonk-roll-left",
+      "name": "Zonk rolling left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 84],
+          [32, 84],
+          [64, 84],
+          [96, 84],
+          [128, 84],
+          [160, 84],
+          [192, 84],
+          [224, 84]
+        ]
+      }
+    },
+    {
+      "id": "zonk-roll-right",
+      "name": "Zonk rolling right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 100],
+          [32, 100],
+          [64, 100],
+          [96, 100],
+          [128, 100],
+          [160, 100],
+          [192, 100],
+          [224, 100]
+        ]
+      }
+    },
+    {
+      "id": "infotron-roll-left",
+      "name": "Infotron rolling left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 164],
+          [32, 164],
+          [64, 164],
+          [96, 164],
+          [8, 164],
+          [160, 164],
+          [192, 164],
+          [224, 164]
+        ]
+      }
+    },
+    {
+      "id": "infotron-roll-right",
+      "name": "Infotron rolling right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 180],
+          [32, 180],
+          [64, 180],
+          [96, 180],
+          [128, 180],
+          [160, 180],
+          [192, 180],
+          [224, 180]
+        ]
+      }
+    },
+    {
+      "id": "explosion",
+      "name": "Explosion",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 196],
+          [16, 196],
+          [32, 196],
+          [48, 196],
+          [64, 196],
+          [80, 196],
+          [96, 196],
+          [112, 196]
+        ]
+      }
+    },
+    {
+      "id": "infotron-explosion",
+      "name": "Infotron explosion",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [128, 196],
+          [144, 196],
+          [160, 196],
+          [176, 196],
+          [192, 196],
+          [208, 196],
+          [224, 196],
+          [240, 196]
+        ]
+      }
+    },
+    {
+      "id": "bug-sparks",
+      "name": "Bug sparking",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [304, 100],
+          [256, 196],
+          [272, 196],
+          [288, 196],
+          [304, 196],
+          [288, 196],
+          [272, 196],
+          [288, 196],
+          [304, 196],
+          [288, 196],
+          [272, 196],
+          [256, 196],
+          [304, 100],
+          [304, 64]
+        ]
+      }
+    },
+    {
+      "id": "snik-snak-turn",
+      "name": "Snik Snak turning",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [192, 388],
+          [64, 260],
+          [96, 244],
+          [80, 260],
+          [208, 388],
+          [96, 260],
+          [48, 260],
+          [112, 260]
+        ]
+      }
+    },
+    {
+      "id": "electron-spin",
+      "name": "Electron spinning",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 404],
+          [16, 404],
+          [32, 404],
+          [48, 404],
+          [64, 404],
+          [80, 404],
+          [96, 404],
+          [112, 404]
+        ]
+      }
+    },
+    {
+      "id": "murphy-moves",
+      "name": "Murphy movement (37 sequences)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT"
+      },
+      "todo": "Map frame tables (mixed 16/32px frames)"
+    },
+    {
+      "id": "snik-snak-moves",
+      "name": "Snik Snak moving",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT"
+      },
+      "todo": "Map frame tables"
+    },
+    {
+      "id": "electron-moves",
+      "name": "Electron moving",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT"
+      },
+      "todo": "Map frame tables"
+    },
+    {
+      "id": "font-6",
+      "name": "Small font (6px)",
+      "kind": "font",
+      "source": {
+        "file": "CHARS6.DAT"
+      },
+      "todo": "Decode 1bpp glyphs"
+    },
+    {
+      "id": "font-8",
+      "name": "Large font (8px)",
+      "kind": "font",
+      "source": {
+        "file": "CHARS8.DAT"
+      },
+      "todo": "Decode 1bpp glyphs"
+    },
+    {
+      "id": "title",
+      "name": "Title screen",
+      "kind": "screen",
+      "source": {
+        "file": "TITLE.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "title-1",
+      "name": "Title screen 1",
+      "kind": "screen",
+      "source": {
+        "file": "TITLE1.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "title-2",
+      "name": "Title screen 2",
+      "kind": "screen",
+      "source": {
+        "file": "TITLE2.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "menu",
+      "name": "Main menu",
+      "kind": "screen",
+      "source": {
+        "file": "MENU.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "controls",
+      "name": "Controls screen",
+      "kind": "screen",
+      "source": {
+        "file": "CONTROLS.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "back",
+      "name": "Background",
+      "kind": "screen",
+      "source": {
+        "file": "BACK.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "gfx",
+      "name": "Level-select graphics",
+      "kind": "screen",
+      "source": {
+        "file": "GFX.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    },
+    {
+      "id": "panel",
+      "name": "Bottom panel",
+      "kind": "screen",
+      "source": {
+        "file": "PANEL.DAT"
+      },
+      "todo": "Decode screen bitmap"
+    }
+  ]
+}
