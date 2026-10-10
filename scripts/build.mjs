@@ -2,7 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { loadAsset } from './assets.mjs';
 import { SHEETS, crop, readPalette } from './dat.mjs';
-import { clearBackground, filmstripSvg, pixelSvg, scale3x } from './svg.mjs';
+import { clearBackground, filmstripSvg, pixelSvg } from './svg.mjs';
 
 const root = new URL('../', import.meta.url);
 const dist = new URL('dist/', root);
@@ -26,7 +26,7 @@ for (const sprite of sprites) {
     Object.assign(entry, { w, h, frames: frames.length });
 
     if (sprite.svg) {
-      const svg = pixelSvg(scale3x(clearBackground(grids[0])), palette, sprite.name);
+      const svg = pixelSvg(clearBackground(grids[0]), palette, sprite.name);
       await writeFile(new URL(`svg/pixel/${sprite.id}.svg`, root), svg);
     }
   }
