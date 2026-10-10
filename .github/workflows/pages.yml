@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: 22
       - run: npm run build
-      - name: Generated SVGs and fonts are committed
-        run: git diff --exit-code svg/ fonts/ && test -z "$(git status --porcelain svg/ fonts/)"
+      - name: Generated SVGs, fonts and screens are committed
+        run: git diff --exit-code svg/ fonts/ screens/ && test -z "$(git status --porcelain svg/ fonts/ screens/)"
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

@@ -1,0 +1,153 @@
+{
+  "fonts": {
+    "credits": { "family": "Supaplex Credits", "h": 11, "ink": [8, 12], "deco": { "2": [[1, 1]] } },
+    "website": { "family": "Supaplex Website", "h": 10, "ink": [8, 12], "deco": { "2": [[1, 1]] } },
+    "menu": { "family": "Supaplex Menu", "h": 7, "ink": [6], "deco": { "0": [[1, 1]] } },
+    "heading": { "family": "Supaplex Heading", "h": 7, "ink": [11, 6, 12, 2], "deco": { "0": [[1, 1]] } },
+    "heading-6": { "family": "Supaplex Heading 6", "h": 6, "ink": [11, 6, 12, 2], "deco": { "0": [[1, 1]] } },
+    "cast": { "family": "Supaplex Cast", "h": 10, "ink": [0], "deco": { "5": [[-1, -1], [0, -1], [-1, 0], [-1, 1], [1, -1]], "14": [[1, 0], [0, 1], [1, 1]] } },
+    "labels": { "family": "Supaplex Labels", "h": 10, "ink": [12], "deco": { "14": [[0, 1], [1, 1]] } },
+    "chip": { "family": "Supaplex Chip", "h": 8, "ink": [15] },
+    "chip-small": { "family": "Supaplex Chip Small", "h": 5, "ink": [15] },
+    "exit": { "family": "Supaplex Exit", "h": 8, "ink": [13] }
+  },
+  "screens": {
+    "title-2": {
+      "name": "Credits",
+      "from": "title-1",
+      "text": [
+        { "font": "credits", "x": 70, "y": 48, "w": 180, "text": "Program....Philip Jespersen" },
+        { "font": "credits", "x": 70, "y": 61, "w": 180, "text": "Graphics...... Michael Stopp" },
+        { "font": "credits", "x": 70, "y": 74, "w": 180, "text": "PC Code........ Robin Heydon" },
+        { "font": "credits", "x": 70, "y": 87, "w": 180, "text": "PC Graphics.......Matt Smith" },
+        { "font": "credits", "x": 70, "y": 100, "w": 180, "text": "Music / FX ..David Whittaker" },
+        { "font": "website", "x": 66, "y": 118, "w": 192, "text": "More information on the website:", "cuts": [44, 49, 77] },
+        { "font": "website", "x": 66, "y": 132, "w": 192, "text": "www.elmerproductions.com/sp/", "cuts": [109, 168] }
+      ]
+    },
+    "menu": {
+      "name": "Menu",
+      "text": [
+        { "font": "menu", "x": 40, "y": 7, "w": 100, "text": "new player" },
+        { "font": "menu", "x": 40, "y": 16, "w": 100, "text": "delete player", "cuts": [26, 32] },
+        { "font": "menu", "x": 40, "y": 25, "w": 100, "text": "skip level" },
+        { "font": "menu", "x": 40, "y": 34, "w": 100, "text": "statistics", "cuts": [9, 22] },
+        { "font": "menu", "x": 40, "y": 43, "w": 100, "text": "gfx-tutor" },
+        { "font": "menu", "x": 40, "y": 52, "w": 100, "text": "demo" },
+        { "font": "menu", "x": 40, "y": 61, "w": 100, "text": "controls" },
+        { "font": "heading", "x": 194, "y": 16, "w": 88, "text": "HALL OF FAME" },
+        { "font": "heading", "x": 42, "y": 80, "w": 61, "text": "RANKINGS" },
+        { "font": "heading", "x": 181, "y": 81, "w": 110, "text": "CURRENT PLAYER" },
+        { "font": "heading", "x": 187, "y": 115, "w": 93, "text": "MESSAGE LINE" },
+        { "font": "heading", "x": 187, "y": 144, "w": 78, "text": "LEVEL-LIST" },
+        { "font": "heading", "x": 187, "y": 183, "w": 78, "text": "LEVEL-LIST" },
+        { "font": "heading-6", "x": 24, "y": 145, "w": 41, "text": "PLAYER" },
+        { "font": "heading-6", "x": 13, "y": 184, "w": 41, "text": "PLAYER" }
+      ],
+      "slots": [
+        { "label": "Hall of fame 1", "font": "font-6", "x": 184, "y": 28, "w": 108, "colour": 8 },
+        { "label": "Hall of fame 2", "font": "font-6", "x": 184, "y": 37, "w": 108, "colour": 8 },
+        { "label": "Hall of fame 3", "font": "font-6", "x": 184, "y": 46, "w": 108, "colour": 8 },
+        { "label": "Rankings 1", "font": "font-6", "x": 8, "y": 92, "w": 130, "colour": 8 },
+        { "label": "Rankings 2", "font": "font-6", "x": 8, "y": 101, "w": 130, "colour": 8 },
+        { "label": "Rankings 3", "font": "font-6", "x": 8, "y": 110, "w": 130, "colour": 6 },
+        { "label": "Rankings 4", "font": "font-6", "x": 8, "y": 119, "w": 130, "colour": 8 },
+        { "label": "Rankings 5", "font": "font-6", "x": 8, "y": 128, "w": 130, "colour": 8 },
+        { "label": "Ranking", "font": "font-6", "x": 144, "y": 110, "w": 12, "colour": 6 },
+        { "label": "Current player", "font": "font-6", "x": 168, "y": 93, "w": 48, "colour": 8 },
+        { "label": "Time", "font": "font-6", "x": 224, "y": 93, "w": 54, "colour": 8 },
+        { "label": "Next level", "font": "font-6", "x": 288, "y": 93, "w": 18, "colour": 8 },
+        { "label": "Message line", "font": "font-6", "x": 168, "y": 127, "w": 138, "colour": 4 },
+        { "label": "Previous player", "font": "font-6", "x": 16, "y": 155, "w": 48, "colour": 8 },
+        { "label": "Player", "font": "font-6", "x": 16, "y": 164, "w": 48, "colour": 6 },
+        { "label": "Next player", "font": "font-6", "x": 16, "y": 173, "w": 48, "colour": 8 },
+        { "label": "Previous level", "font": "font-6", "x": 144, "y": 155, "w": 162, "colour": 8 },
+        { "label": "Level", "font": "font-6", "x": 144, "y": 164, "w": 162, "colour": 6 },
+        { "label": "Next level", "font": "font-6", "x": 144, "y": 173, "w": 162, "colour": 8 }
+      ]
+    },
+    "controls": {
+      "name": "Controls",
+      "text": [
+        { "font": "chip", "x": 40, "y": 21, "w": 38, "text": "ADLIB" },
+        { "font": "chip", "x": 23, "y": 57, "w": 70, "text": "S. BLASTER" },
+        { "font": "chip", "x": 34, "y": 93, "w": 50, "text": "ROLAND" },
+        { "font": "chip", "x": 28, "y": 129, "w": 62, "text": "COMBINED" },
+        { "font": "chip", "x": 141, "y": 18, "w": 62, "text": "INTERNAL" },
+        { "font": "chip", "x": 135, "y": 99, "w": 38, "text": "MUSIC" },
+        { "font": "chip", "x": 138, "y": 138, "w": 20, "text": "FX" },
+        { "font": "chip", "x": 208, "y": 84, "w": 72, "text": "KEYBOARD", "rotate": 90 },
+        { "font": "chip", "x": 240, "y": 84, "w": 66, "text": "JOYSTICK", "rotate": 90 },
+        { "font": "chip-small", "x": 128, "y": 46, "w": 40, "text": "STANDARD" },
+        { "font": "chip-small", "x": 178, "y": 46, "w": 34, "text": "SAMPLES" },
+        { "font": "exit", "x": 97, "y": 187, "w": 25, "text": "EXIT" }
+      ]
+    },
+    "gfx": {
+      "name": "The cast",
+      "text": [
+        { "font": "cast", "x": 117, "y": 8, "w": 87, "text": "THE CAST" },
+        { "font": "labels", "x": 58, "y": 35, "w": 43, "text": "murphy" },
+        { "font": "labels", "x": 155, "y": 35, "w": 44, "text": "infotron", "cuts": [14] },
+        { "font": "labels", "x": 248, "y": 35, "w": 46, "text": "terminal" },
+        { "font": "labels", "x": 58, "y": 65, "w": 27, "text": "base" },
+        { "font": "labels", "x": 155, "y": 65, "w": 21, "text": "exit" },
+        { "font": "labels", "x": 248, "y": 65, "w": 22, "text": "bug" },
+        { "font": "labels", "x": 58, "y": 95, "w": 47, "text": "electron" },
+        { "font": "labels", "x": 155, "y": 95, "w": 50, "text": "snik snak" },
+        { "font": "labels", "x": 248, "y": 95, "w": 27, "text": "zonk" },
+        { "font": "labels", "x": 94, "y": 128, "w": 60, "text": "utility disks" },
+        { "font": "labels", "x": 248, "y": 128, "w": 29, "text": "ports" },
+        { "font": "labels", "x": 27, "y": 156, "w": 56, "text": "RAM chips" },
+        { "font": "labels", "x": 126, "y": 156, "w": 56, "text": "hardware" }
+      ],
+      "icons": [
+        { "sprite": "murphy", "x": 32, "y": 32 },
+        { "sprite": "infotron", "x": 128, "y": 32 },
+        { "sprite": "terminal", "x": 224, "y": 32 },
+        { "sprite": "base", "x": 32, "y": 62 },
+        { "sprite": "exit", "x": 128, "y": 62 },
+        { "sprite": "bug-sparks", "frame": 4, "x": 224, "y": 62 },
+        { "sprite": "electron", "x": 32, "y": 93 },
+        { "name": "Snik snak", "crop": [128, 91, 16, 16], "x": 128, "y": 91 },
+        { "sprite": "zonk", "x": 224, "y": 92 },
+        { "sprite": "orange-disk", "x": 32, "y": 126 },
+        { "sprite": "red-disk", "x": 50, "y": 126 },
+        { "sprite": "yellow-disk", "x": 68, "y": 126 },
+        { "sprite": "port-right", "x": 184, "y": 126 },
+        { "sprite": "port-vertical", "x": 204, "y": 126 },
+        { "sprite": "port-cross", "x": 224, "y": 126 },
+        { "sprite": "ram-chip", "x": 33, "y": 169 },
+        { "sprite": "ram-chip-left", "x": 54, "y": 169 },
+        { "sprite": "ram-chip-right", "x": 70, "y": 169 },
+        { "name": "Green lamp", "crop": [130, 169, 16, 16], "x": 130, "y": 169 },
+        { "sprite": "hardware-components", "x": 146, "y": 169 },
+        { "sprite": "hardware-lamp-red", "x": 162, "y": 169 },
+        { "sprite": "hardware-stripes", "x": 178, "y": 169 },
+        { "sprite": "hardware-capacitor", "x": 194, "y": 169 },
+        { "sprite": "hardware-lamp-blue", "x": 210, "y": 169 },
+        { "sprite": "hardware-resistors-a", "x": 226, "y": 169 },
+        { "sprite": "hardware", "x": 242, "y": 169 },
+        { "sprite": "hardware-resistors-vertical", "x": 258, "y": 169 },
+        { "sprite": "hardware-resistors-b", "x": 274, "y": 169 }
+      ]
+    },
+    "panel": {
+      "name": "Game panel",
+      "text": [
+        { "font": "heading", "x": 15, "y": 3, "w": 48, "text": "PLAYER" },
+        { "font": "heading", "x": 251, "y": 3, "w": 66, "text": "SUPAPLEX" }
+      ],
+      "slots": [
+        { "label": "Player", "font": "font-8", "x": 72, "y": 3, "w": 64, "colour": 6 },
+        { "label": "Hours", "font": "font-8", "x": 160, "y": 3, "w": 16, "colour": 6 },
+        { "label": "Minutes", "font": "font-8", "x": 184, "y": 3, "w": 16, "colour": 6 },
+        { "label": "Seconds", "font": "font-8", "x": 208, "y": 3, "w": 16, "colour": 6 },
+        { "label": "Level number", "font": "font-8", "x": 16, "y": 14, "w": 24, "colour": 8 },
+        { "label": "Level name", "font": "font-8", "x": 64, "y": 14, "w": 184, "colour": 8 },
+        { "label": "Infotrons", "font": "font-8", "x": 272, "y": 14, "w": 24, "colour": 8 },
+        { "label": "Debug", "font": "font-8", "x": 304, "y": 14, "w": 16, "colour": 6 }
+      ]
+    }
+  }
+}

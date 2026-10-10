@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supaplex screens: Game panel</title>
+  <link rel="icon" href="../svg/pixel/murphy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../screen.css">
+  <style>
+    @font-face { font-family: 'Supaplex 8'; src: url(../fonts/supaplex-8.woff2) format('woff2'), url(../fonts/supaplex-8.ttf) format('truetype'); }
+    @font-face { font-family: 'Supaplex Heading'; src: url(../fonts/supaplex-heading.woff2) format('woff2'), url(../fonts/supaplex-heading.ttf) format('truetype'); }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <h1><a href="../" class="home">Supaplex SVG</a></h1>
+    <nav class="pages"><a href="title-2.html">Credits</a> <a href="menu.html">Menu</a> <a href="controls.html">Controls</a> <a href="gfx.html">The cast</a> <a aria-current="page">Game panel</a></nav>
+    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+  </header>
+  <main class="screens">
+    <div class="frame"><div id="scr" class="scr" style="width:320px;height:24px">
+      <img class="bg" src="panel.svg" alt="" width="320" height="24">
+      <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:16px;top:3px;font:7px/7px 'Supaplex Heading'">PLAYER</div>
+      <div class="t" contenteditable="plaintext-only" spellcheck="false" style="left:252px;top:3px;font:7px/7px 'Supaplex Heading'">SUPAPLEX</div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Player" style="left:72px;top:3px;min-width:64px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Hours" style="left:160px;top:3px;min-width:16px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Minutes" style="left:184px;top:3px;min-width:16px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Seconds" style="left:208px;top:3px;min-width:16px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Level number" style="left:16px;top:14px;min-width:24px;font:8px/8px 'Supaplex 8';color:#7799ee"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Level name" style="left:64px;top:14px;min-width:184px;font:8px/8px 'Supaplex 8';color:#7799ee"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Infotrons" style="left:272px;top:14px;min-width:24px;font:8px/8px 'Supaplex 8';color:#7799ee"></div>
+      <div class="t slot" contenteditable="plaintext-only" spellcheck="false" title="Debug" style="left:304px;top:14px;min-width:16px;font:8px/8px 'Supaplex 8';color:#ee1111"></div>
+    </div></div>
+    <div id="toolbar" class="toolbar"></div>
+  </main>
+  <script type="module" src="../screen.js"></script>
+</body>
+</html>

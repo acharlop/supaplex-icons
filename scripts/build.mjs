@@ -1,16 +1,19 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { BACKGROUND, decode, fontFiles, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
+import { buildScreens } from './screens.mjs';
 import { filmstripSvg, pixelSvg } from './svg.mjs';
 import { ttf, woff2 } from './ttf.mjs';
 
 const dist = new URL('dist/', root);
 const out = new URL('svg/pixel/', root);
 const fonts = new URL('fonts/', root);
+const screens = new URL('screens/', root);
 
 await rm(dist, { recursive: true, force: true });
 await rm(out, { recursive: true, force: true });
 await rm(fonts, { recursive: true, force: true });
+await rm(screens, { recursive: true, force: true });
 await mkdir(fonts);
 await mkdir(new URL('original/', dist), { recursive: true });
 
@@ -38,7 +41,12 @@ for (const sprite of sprites) {
       }
       if (sprite.kind === 'font') {
         const { paths: [woff2Path, ttfPath], family } = fontFiles(sprite);
-        const font = ttf(grids, { family, width: w, copyright: COPYRIGHT });
+        // Glyph i is ASCII 0x20 + i; lowercase maps onto the capitals, as the game has no others.
+        const glyphs = grids.map((grid, i) => ({
+          cps: [0x20 + i, ...(i >= 0x21 && i <= 0x3a ? [0x40 + i] : [])], advance: w,
+          layers: [{ pixels: grid.flatMap((row, y) => row.flatMap((c, x) => (c ? [[x, y]] : []))) }],
+        }));
+        const font = ttf(glyphs, { family, copyright: COPYRIGHT, em: 8, ascent: 7 });
         await writeFile(new URL(ttfPath, root), font);
         await writeFile(new URL(woff2Path, root), woff2(font));
         entry.fonts = [woff2Path, ttfPath];
@@ -50,10 +58,14 @@ for (const sprite of sprites) {
   catalog.push(entry);
 }
 
+const screenSet = await buildScreens(COPYRIGHT);
+
 await cp(new URL('site/', root), dist, { recursive: true });
 await cp(new URL('svg/', root), new URL('svg/', dist), { recursive: true });
 await cp(fonts, new URL('fonts/', dist), { recursive: true });
+await cp(screens, new URL('screens/', dist), { recursive: true });
+await writeFile(new URL('screens.json', dist), JSON.stringify(screenSet));
 await writeFile(new URL('catalog.json', dist), JSON.stringify(catalog));
 
 const files = catalog.reduce((n, s) => n + (s.pixel?.length ?? 0), 0);
-console.log(`Built ${catalog.length} sprites into dist/: ${catalog.filter((s) => s.pixel).length} pixel-exact (${files} SVGs)`);
+console.log(`Built ${catalog.length} sprites into dist/: ${catalog.filter((s) => s.pixel).length} pixel-exact (${files} SVGs), ${screenSet.pages.length} screen pages, ${screenSet.fonts.length} screen fonts`);

@@ -15,6 +15,9 @@ function render() {
     section.querySelector('.sample').textContent = state.text;
     section.querySelector('.charset').textContent = CHARSET;
   }
+  for (const sample of document.querySelectorAll('.screen-font .sample')) {
+    sample.style.font = `${sample.dataset.h * state.scale}px/${sample.dataset.h * state.scale}px '${sample.dataset.family}'`;
+  }
   document.querySelectorAll('.sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.scale));
 }
 
@@ -26,4 +29,18 @@ document.querySelector('.sizes').append(...SCALES.map((scale) => {
   return b;
 }));
 text.addEventListener('input', () => { state.text = text.value; render(); });
+render();
+
+const { fonts } = await (await fetch('screens.json')).json();
+for (const f of fonts) {
+  document.fonts.add(new FontFace(f.family, f.files.map((path) => `url(${path})`).join(', ')));
+  const section = document.createElement('div');
+  section.className = 'screen-font';
+  section.innerHTML = `<h3>${f.family} <span class="muted">${f.h}px</span></h3>
+    <p>${f.files.map((path) => `<a href="${path}" download>${path.split('.').pop()}</a>`).join(' ')}</p>
+    <div class="screen"><div class="sample" contenteditable="plaintext-only" spellcheck="false"></div></div>`;
+  Object.assign(section.querySelector('.sample').dataset, { family: f.family, h: f.h });
+  section.querySelector('.sample').textContent = f.samples.join('\n');
+  document.getElementById('screen-fonts').append(section);
+}
 render();

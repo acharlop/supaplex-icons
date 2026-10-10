@@ -13,13 +13,18 @@ Layout and settings: see `README.md` (the "For AI" section).
 5. **Smooth (optional).** Hand-drawn `svg/smooth/<id>.svg`, single-frame sprites only, and only when asked. Match `svg/smooth/murphy.svg`: 16x16 viewBox, `<title>` equal to the sprite's `name`, flat palette fills, layered shapes, no gradients or opacity. Draw one design per unique grid, derive mirrors and rotations by transforming coordinates, and copy identical sprites with only the title changed.
 6. **Status.** Update the README status line.
 
-Completion: `npm run verify` exits 0 for all `svg: true` sprites (fonts include the `fonts/*.woff2` and `fonts/*.ttf` rows), and a second `npm run build` leaves `git status svg/ fonts/` clean (CI fails otherwise).
+Completion: `npm run verify` exits 0 for all `svg: true` sprites (fonts include the `fonts/*.woff2` and `fonts/*.ttf` rows), and a second `npm run build` leaves `git status svg/ fonts/ screens/` clean (CI fails otherwise).
+
+## Editable screens
+
+`screens.json` drives `screens/` and the learned fonts (README "For AI" has the format). To change a screen: edit its runs, slots or icons, then `npm run build`. The build throws if a run's text doesn't recompose the screen pixels or misses ink, or an icon differs from the screen. Adjust `cuts` and `deco` until it passes, never the check. Done when `npm run verify -- <screen id>` shows `:0` on every `screens/<id>` row.
 
 ## Gotchas
 
 - Edge-touching black becomes transparent; enclosed black stays. Verify renders on a black page so both read as the original black.
 - Fonts make every unset bit transparent; screens keep every pixel. Both are set per `kind` in `BACKGROUND` (`scripts/sprites.mjs`).
 - macOS font smoothing widens glyphs by a fraction of a pixel; text needs `-webkit-font-smoothing: antialiased` to match.
+- Headless Chrome instances run one at a time; parallel ones share a profile and hang until the teardown watchdog kills them.
 - Headless Chrome with `--user-data-dir` writes the screenshot and never exits; keep it off the `verify` command line.
 - `verify` needs Chrome (`CHROME=/path` to override) and `ffmpeg`. `rsvg-convert -w 256 <svg> -o x.png` is the quick way to eyeball a render.
 - Smooth art never gates a batch: Avi only judges the 256px exact match. Merge once verify passes.

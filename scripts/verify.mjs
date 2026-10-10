@@ -1,6 +1,6 @@
-// Renders every pixel SVG frame and every glyph of each font file in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size) and counts pixels that differ from the original.
+// Renders every pixel SVG frame and every glyph of each font file in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size), and each built screen page at 1x, 2x and 4x, and counts pixels that differ from the original.
 import { execFile } from 'node:child_process';
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
@@ -74,6 +74,50 @@ async function check(page, n) {
 }
 
 for (const [n, page] of pages.entries()) await check(page, n);
+
+// Screen pages from dist/ (run the build first), alone on a black page, against the original screen or the intro frame they should show.
+const SPLIT = { top: 26, height: 148, left: 147, right: 161, leftW: 13, rightW: 14 };
+const grid = async (id) => {
+  const { palette, grids: [g] } = await decode(sprites.find((s) => s.id === id));
+  return g.map((row) => row.map((c) => palette[c]));
+};
+function splitAt(from, dim, d) {
+  const l = SPLIT.left - d, r = SPLIT.right + d;
+  return from.map((row, y) => row.map((c, x) => {
+    if (y < SPLIT.top || y >= SPLIT.top + SPLIT.height) return c;
+    if (x >= l && x < l + SPLIT.leftW) return from[y][SPLIT.left + x - l];
+    if (x >= r && x < r + SPLIT.rightW) return from[y][SPLIT.right + x - r];
+    return x >= l + SPLIT.leftW && x < r ? dim[y][x] : c;
+  }));
+}
+const screenJobs = [];
+const { screens } = JSON.parse(await readFile(new URL('screens.json', root), 'utf8'));
+for (const [id, s] of Object.entries(screens).filter(([id]) => !ids.length || ids.includes(id))) {
+  const states = [['', await grid(id)]];
+  if (s.from) {
+    const from = await grid(s.from);
+    const { grids: [g] } = await decode(sprites.find((sp) => sp.id === id));
+    const { palette } = await decode(sprites.find((sp) => sp.id === s.from));
+    const dim = g.map((row) => row.map((c) => palette[c]));
+    states[0][0] = '&at=end';
+    for (const d of [0, 60, 121]) states.push([`&at=${d}`, splitAt(from, dim, d)]);
+  }
+  for (const [query, want] of states) for (const k of [1, 2, 4]) screenJobs.push({ id: `screens/${id}${query.replace('&at=', '@')}`, query: `bare&zoom=${k}${query}`, k, want });
+}
+// One Chrome at a time: parallel instances share the default profile and hang on teardown.
+for (const [n, j] of screenJobs.entries()) {
+  const W = j.want[0].length * j.k, H = j.want.length * j.k, png = join(tmp, `screen${n}.png`);
+  await run(chrome, ['--headless', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1', '--virtual-time-budget=5000',
+    `--window-size=${W},${H}`, `--screenshot=${png}`, '--allow-file-access-from-files', `${new URL(`dist/screens/${j.id.split('/')[1].split('@')[0]}.html`, root)}?${j.query}`]);
+  const { stdout: shot } = await run('ffmpeg', ['-loglevel', 'error', '-i', png, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], { encoding: 'buffer', maxBuffer: W * H * 3 + 1024 });
+  let diff = 0;
+  for (let py = 0; py < H; py++) for (let px = 0; px < W; px++) {
+    const hex = j.want[Math.floor(py / j.k)][Math.floor(px / j.k)], i = (py * W + px) * 3;
+    if ([1, 3, 5].some((h, c) => shot[i + c] !== parseInt(hex.slice(h, h + 2), 16))) diff++;
+  }
+  if (!diffs.has(j.id)) diffs.set(j.id, new Map());
+  diffs.get(j.id).set(W, diff);
+}
 await rm(tmp, { recursive: true, force: true });
 
 let failed = 0;
@@ -81,7 +125,7 @@ for (const [id, sizes] of diffs) {
   failed += [...sizes.values()].filter(Boolean).length;
   console.log(id.padEnd(22), [...sizes].map(([W, diff]) => `${W}px:${diff}`).join('  '));
 }
-console.log(`${jobs.length} renders on ${pages.length} pages`);
+console.log(`${jobs.length} renders on ${pages.length} pages, ${screenJobs.length} screen page renders`);
 if (failed) {
   console.error(`${failed} sprite size(s) differ from the original`);
   process.exit(1);
