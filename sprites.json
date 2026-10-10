@@ -1,6 +1,6 @@
 {
   "pixel": {
-    "exactUpTo": 128,
+    "exactUpTo": 256,
     "cornerCut": 0.25
   },
   "sprites": [
