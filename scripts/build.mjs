@@ -1,8 +1,8 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { BACKGROUND, decode, fontFile, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
+import { BACKGROUND, decode, fontFiles, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
 import { filmstripSvg, pixelSvg } from './svg.mjs';
-import { ttf } from './ttf.mjs';
+import { ttf, woff2 } from './ttf.mjs';
 
 const dist = new URL('dist/', root);
 const out = new URL('svg/pixel/', root);
@@ -37,9 +37,11 @@ for (const sprite of sprites) {
         entry.pixel.push(`svg/pixel/${path}`);
       }
       if (sprite.kind === 'font') {
-        const { path, family } = fontFile(sprite);
-        await writeFile(new URL(path, root), ttf(grids, { family, width: w, copyright: COPYRIGHT }));
-        entry.font = path;
+        const { paths: [woff2Path, ttfPath], family } = fontFiles(sprite);
+        const font = ttf(grids, { family, width: w, copyright: COPYRIGHT });
+        await writeFile(new URL(ttfPath, root), font);
+        await writeFile(new URL(woff2Path, root), woff2(font));
+        entry.fonts = [woff2Path, ttfPath];
       }
     }
   }

@@ -1,10 +1,10 @@
-// Renders every pixel SVG frame and every TrueType glyph in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size) and counts pixels that differ from the original.
+// Renders every pixel SVG frame and every glyph of each font file in headless Chrome at each power-of-two scale up to `exactUpTo` (at least native size) and counts pixels that differ from the original.
 import { execFile } from 'node:child_process';
 import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { decode, fontFile, framePath, pixel, root, sprites } from './sprites.mjs';
+import { decode, fontFiles, framePath, pixel, root, sprites } from './sprites.mjs';
 
 const run = promisify(execFile);
 const chrome = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -28,17 +28,18 @@ for (const sprite of sprites.filter((s) => s.svg && (!ids.length || ids.includes
   });
   if (sprite.kind !== 'font') continue;
   // Text in the font, one em (7 rows plus a blank descender row) per glyph.
-  const { path, family } = fontFile(sprite);
-  faces.push(`@font-face{font-family:'${family}';src:url(${new URL(path, root)})}`);
-  diffs.set(path, new Map(sizes));
-  grids.forEach((grid, i) => {
-    const em = [...grid, grid[0].map(() => 0)];
-    for (const W of sizes.keys()) {
-      const k = W / w;
+  for (const path of fontFiles(sprite).paths) {
+    faces.push(`@font-face{font-family:'${path}';src:url(${new URL(path, root)})}`);
+    diffs.set(path, new Map(sizes));
+    grids.forEach((grid, i) => {
+      const em = [...grid, grid[0].map(() => 0)];
       const char = escape(String.fromCharCode(0x20 + i));
-      jobs.push({ id: path, k, W, H: k * 8, grid: em, rgb, tag: (pos) => `<span style="${pos};font:${k * 8}px/${k * 8}px '${family}';-webkit-font-smoothing:antialiased;color:${palette[1]}">${char}</span>` });
-    }
-  });
+      for (const W of sizes.keys()) {
+        const k = W / w;
+        jobs.push({ id: path, k, W, H: k * 8, grid: em, rgb, tag: (pos) => `<span style="${pos};font:${k * 8}px/${k * 8}px '${path}';-webkit-font-smoothing:antialiased;color:${palette[1]}">${char}</span>` });
+      }
+    });
+  }
 }
 
 const pages = [];

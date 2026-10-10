@@ -1,4 +1,5 @@
 // Minimal TrueType writer for the bitmap fonts: each glyph pixel is an em/8 square, traced into merged outlines.
+import { brotliCompressSync, constants } from 'node:zlib';
 export const UNIT = 128;
 const EM = 8 * UNIT;
 const ASCENT = 7 * UNIT;
@@ -138,4 +139,31 @@ export function ttf(grids, { family, width, copyright }) {
   const font = Buffer.concat([dir.pad(), ...tables.map((t) => t.data)]);
   font.writeUInt32BE((0xb1b0afba - checksum(font)) >>> 0, headAt + 8);
   return font;
+}
+
+const WOFF2_TAGS = ['cmap', 'head', 'hhea', 'hmtx', 'maxp', 'name', 'OS/2', 'post', 'cvt ', 'fpgm', 'glyf', 'loca', 'prep'];
+
+const base128 = (n) => {
+  const bytes = [n & 0x7f];
+  while ((n >>>= 7)) bytes.unshift((n & 0x7f) | 0x80);
+  return bytes;
+};
+
+// WOFF2 with every table stored as-is (glyf/loca use the spec's null transform, version 3), Brotli in font mode.
+export function woff2(font) {
+  const tables = Array.from({ length: font.readUInt16BE(4) }, (_, i) => {
+    const at = 12 + 16 * i, offset = font.readUInt32BE(at + 8), length = font.readUInt32BE(at + 12);
+    return { tag: font.toString('latin1', at, at + 4), data: font.subarray(offset, offset + length) };
+  });
+  const dir = new Out();
+  for (const { tag, data } of tables) dir.u8(WOFF2_TAGS.indexOf(tag) | (tag === 'glyf' || tag === 'loca' ? 0xc0 : 0), ...base128(data.length));
+  const stream = Buffer.concat(tables.map((t) => t.data));
+  const compressed = brotliCompressSync(stream, {
+    params: { [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_FONT, [constants.BROTLI_PARAM_QUALITY]: 11, [constants.BROTLI_PARAM_SIZE_HINT]: stream.length },
+  });
+  const body = Buffer.concat([...dir.parts, compressed]);
+  const length = 48 + body.length + ((4 - (body.length % 4)) % 4);
+  const header = new Out().raw(Buffer.from('wOF2')).u32(0x00010000, length).u16(tables.length, 0)
+    .u32(font.length, compressed.length).u16(1, 0).u32(0, 0, 0, 0, 0);
+  return new Out().raw(header.pad()).raw(body).pad();
 }

@@ -28,8 +28,8 @@ export const BACKGROUND = {
 
 const glyph = (i) => 0x20 + i;
 
-// Fonts also ship as TrueType, named by glyph width.
-export const fontFile = (sprite) => ({ path: `fonts/supaplex-${sprite.source.w}.ttf`, family: `Supaplex ${sprite.source.w}` });
+// Fonts also ship as TrueType and WOFF2, named by glyph width.
+export const fontFiles = (sprite) => ({ paths: ['woff2', 'ttf'].map((ext) => `fonts/supaplex-${sprite.source.w}.${ext}`), family: `Supaplex ${sprite.source.w}` });
 
 // Path under svg/pixel/: `<id>.svg` for one frame, else `<id>/<n>.svg` (fonts: `<id>/<ascii hex>.svg`).
 export function framePath(sprite, i) {

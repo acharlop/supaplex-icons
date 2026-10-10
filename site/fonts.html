@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supaplex fonts</title>
+  <meta name="description" content="The two Supaplex bitmap fonts as WOFF2 and TrueType, pixel-exact at 8, 16, 32… px.">
+  <link rel="icon" href="svg/pixel/murphy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face { font-family: 'Supaplex 6'; src: url(fonts/supaplex-6.woff2) format('woff2'), url(fonts/supaplex-6.ttf) format('truetype'); }
+    @font-face { font-family: 'Supaplex 8'; src: url(fonts/supaplex-8.woff2) format('woff2'), url(fonts/supaplex-8.ttf) format('truetype'); }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <h1><a href="./" class="home">Supaplex SVG</a></h1>
+    <p class="muted">Fonts</p>
+    <a href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+  </header>
+
+  <main class="fonts">
+    <section class="detail">
+      <p>Both in-game fonts, pixel-exact at font sizes 8, 16, 32… px. Capitals, digits and punctuation; lowercase types as capitals.</p>
+      <div class="controls">
+        <div class="sizes" role="group" aria-label="Font size"></div>
+        <label>Text <textarea id="text" rows="3" spellcheck="false"></textarea></label>
+      </div>
+    </section>
+
+    <section class="detail font" data-family="Supaplex 8">
+      <h2>Supaplex 8 <span class="muted">large, 8px wide</span></h2>
+      <p><a href="fonts/supaplex-8.woff2" download>woff2</a> <a href="fonts/supaplex-8.ttf" download>ttf</a></p>
+      <div class="screen"><div class="sample"></div><div class="charset"></div></div>
+    </section>
+
+    <section class="detail font" data-family="Supaplex 6">
+      <h2>Supaplex 6 <span class="muted">small, 6px wide</span></h2>
+      <p><a href="fonts/supaplex-6.woff2" download>woff2</a> <a href="fonts/supaplex-6.ttf" download>ttf</a></p>
+      <div class="screen"><div class="sample"></div><div class="charset"></div></div>
+    </section>
+
+    <section class="detail">
+      <h2>Use</h2>
+      <pre><code>@font-face {
+  font-family: 'Supaplex 8';
+  src: url(supaplex-8.woff2) format('woff2'), url(supaplex-8.ttf) format('truetype');
+}
+.hud {
+  font: 16px/16px 'Supaplex 8';           /* multiples of 8px stay pixel-exact */
+  -webkit-font-smoothing: antialiased;   /* macOS: stops glyphs widening */
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="muted">
+    Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.
+  </footer>
+  <script type="module" src="fonts.js"></script>
+</body>
+</html>

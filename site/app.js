@@ -76,8 +76,7 @@ function renderDetail() {
     link.href = kind === 'pixel' ? sprite.pixel?.[0] ?? '' : `svg/smooth/${sprite.id}.svg`;
     link.textContent = sprite.frames > 1 && kind === 'pixel' ? 'frame 1 svg' : 'svg';
   }
-  $('dl-font').hidden = !sprite.font;
-  $('dl-font').href = sprite.font ?? '';
+  $('dl-font').hidden = !sprite.fonts;
   document.querySelectorAll('.sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.size));
   document.querySelectorAll('#grid button').forEach((b) => b.setAttribute('aria-current', b.value === sprite.id));
 }

@@ -61,3 +61,15 @@ figcaption { margin-top: .35rem; font-size: .9rem; display: flex; gap: .5rem; }
 .status.done { color: var(--done); }
 
 footer { padding: 1rem 1.25rem 2rem; font-size: .85rem; }
+
+.home { color: inherit; text-decoration: none; }
+.fonts { display: grid; gap: 1.25rem; padding: 1.25rem; max-width: 1100px; }
+.fonts .detail p { margin: .5rem 0; }
+.controls { display: flex; flex-wrap: wrap; align-items: start; gap: 1rem; }
+.controls .sizes { margin: 0; }
+.controls label { display: flex; gap: .5rem; flex: 1; min-width: 260px; }
+.controls textarea { flex: 1; font: inherit; text-transform: uppercase; background: var(--bg); color: inherit; border: 1px solid var(--line); border-radius: 6px; padding: .4rem; }
+.screen { background: #000; color: #fff; padding: 16px; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased; }
+.charset { margin-top: 1em; color: #ffd800; }
+pre { margin: .5rem 0 0; padding: .75rem; overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
