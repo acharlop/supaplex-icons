@@ -34,12 +34,8 @@ function runsToPaths(grid, palette, offsetX = 0) {
   return [...runs].map(([color, d]) => `<path fill="${palette[color]}" d="${d.join('')}"/>`).join('');
 }
 
-// Above this rendered width the SVG trims convex pixel corners; at or below it, it is the exact original grid.
-export const EXACT_MAX = 128;
-const CUT = 0.25;
-
 // Each grid vertex where 3 pixels share a colour and the 4th differs: trim the odd pixel's corner.
-function corners(grid) {
+function corners(grid, cut) {
   const h = grid.length, w = grid[0].length;
   const at = (x, y) => (x < 0 || y < 0 || x >= w || y >= h ? TRANSPARENT : grid[y][x]);
   const out = [];
@@ -50,23 +46,27 @@ function corners(grid) {
       if (odd.length !== 1) continue;
       const fill = quad.find((p) => p !== odd[0]).c;
       if (quad.filter((p) => p.c === fill).length !== 3) continue;
-      const dx = odd[0].x < vx ? -CUT : CUT, dy = odd[0].y < vy ? -CUT : CUT;
+      const dx = odd[0].x < vx ? -cut : cut, dy = odd[0].y < vy ? -cut : cut;
       out.push({ fill, d: `M${vx} ${vy}h${dx}l${-dx} ${dy}z` });
     }
   }
   return out;
 }
 
-export function pixelSvg(grid, palette, title) {
+// Exact grid up to `exactUpTo` rendered px; above that, convex corners are trimmed by `cornerCut` source px.
+export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }) {
   const w = grid[0].length, h = grid.length;
-  const cuts = corners(grid);
+  const exact = `<g class="grid" shape-rendering="crispEdges">${runsToPaths(grid, palette)}</g>`;
+  const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><title>${title}</title>`;
+  if (!cornerCut) return `${head}${exact}</svg>\n`;
+  const cuts = corners(grid, cornerCut);
   const byColor = Map.groupBy(cuts.filter((c) => c.fill !== TRANSPARENT), (c) => c.fill);
   const fills = [...byColor].map(([color, cs]) => `<path fill="${palette[color]}" d="${cs.map((c) => c.d).join('')}"/>`).join('');
   const holes = cuts.filter((c) => c.fill === TRANSPARENT).map((c) => c.d).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><title>${title}</title>`
-    + `<style>.soft{display:none}@media (min-width:${EXACT_MAX + 1}px){.soft{display:inline}.grid{mask:url(#cut)}}</style>`
+  return head
+    + `<style>.soft{display:none}@media (min-width:${exactUpTo + 1}px){.soft{display:inline}.grid{mask:url(#cut)}}</style>`
     + `<mask id="cut"><rect width="${w}" height="${h}" fill="#fff"/><path d="${holes}"/></mask>`
-    + `<g class="grid" shape-rendering="crispEdges">${runsToPaths(grid, palette)}</g><g class="soft">${fills}</g></svg>\n`;
+    + `${exact}<g class="soft">${fills}</g></svg>\n`;
 }
 
 // All frames side by side, for the catalogue preview.

@@ -6,7 +6,7 @@ import { clearBackground, filmstripSvg, pixelSvg } from './svg.mjs';
 
 const root = new URL('../', import.meta.url);
 const dist = new URL('dist/', root);
-const { sprites } = JSON.parse(await readFile(new URL('sprites.json', root), 'utf8'));
+const { pixel, sprites } = JSON.parse(await readFile(new URL('sprites.json', root), 'utf8'));
 
 const palette = readPalette(await loadAsset('PALETTES.DAT'));
 const sheets = {};
@@ -26,7 +26,7 @@ for (const sprite of sprites) {
     Object.assign(entry, { w, h, frames: frames.length });
 
     if (sprite.svg) {
-      const svg = pixelSvg(clearBackground(grids[0]), palette, sprite.name);
+      const svg = pixelSvg(clearBackground(grids[0]), palette, sprite.name, pixel);
       await writeFile(new URL(`svg/pixel/${sprite.id}.svg`, root), svg);
     }
   }

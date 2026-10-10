@@ -1,4 +1,8 @@
 {
+  "pixel": {
+    "exactUpTo": 128,
+    "cornerCut": 0.25
+  },
   "sprites": [
     {
       "id": "space",
