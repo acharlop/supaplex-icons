@@ -1,9 +1,11 @@
+import { EFFECTS, sound } from './sound.js';
+
 const [catalog, { fonts, pages }] = await Promise.all(['catalog.json', 'screens.json'].map(async (f) => (await fetch(f)).json()));
 const CAST = ['murphy-yawn', 'infotron-roll-right', 'snik-snak-turn-left', 'electron-spin', 'bug-sparks', 'zonk-roll-right', 'terminal', 'exit', 'orange-disk', 'red-disk', 'yellow-disk', 'port-cross', 'explosion', 'murphy-eat-infotron-right'];
 const ABOUT = {
   'title-2': 'The credits, with the split intro from the title screen.',
   menu: 'Players, rankings and the level list, with working buttons.',
-  controls: 'The keyboard and joystick help screen.',
+  controls: 'The options screen: sound card, music, effects, keyboard or joystick.',
   gfx: 'The gfx-tutor: every tile and what it does.',
   panel: 'The bar under the playfield: player, level, time and infotrons left.',
 };
@@ -52,6 +54,9 @@ $('tiles').append(...catalog.filter((s) => s.kind === 'tile' || s.kind === 'anim
   a.firstChild.alt = s.name;
   return a;
 }));
+
+$('effects').append(...Object.entries(EFFECTS).map(([name, [id, frame, about]]) => el('button', { type: 'button', title: about, onclick: () => sound(name) },
+  el('img', { className: 'px', src: byId.get(id).pixel[frame], alt: '', width: 48, height: 48 }), el('span', { className: 'pix', textContent: name }))));
 
 for (const f of fonts) document.fonts.add(new FontFace(f.family, f.files.map((path) => `url(${path})`).join(', ')));
 $('typeset').append(

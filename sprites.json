@@ -1660,6 +1660,27 @@
       "svg": true
     },
     {
+      "id": "mouse",
+      "name": "Mouse pointer",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 8,
+        "h": 8,
+        "frames": [
+          [0, 445],
+          [8, 445],
+          [16, 445],
+          [24, 445],
+          [0, 454],
+          [8, 454],
+          [16, 454],
+          [24, 454]
+        ]
+      },
+      "svg": true
+    },
+    {
       "id": "font-6",
       "name": "Small font (6px)",
       "kind": "font",

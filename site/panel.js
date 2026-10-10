@@ -28,5 +28,4 @@ if (level) {
   };
   scr.addEventListener('pointerdown', back);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') back(); });
-  scr.classList.add('playing');
 }

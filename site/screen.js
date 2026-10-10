@@ -7,9 +7,9 @@ const scr = document.getElementById('scr');
 const toolbar = document.getElementById('toolbar');
 const W = scr.offsetWidth;
 const bare = params.has('bare');
-// The largest whole zoom that fits the window, less the page chrome around the screen.
+// The largest whole zoom that fits the window, less the page chrome and the panel footer around the screen.
 const fit = (x = 0, y = 0) => Math.max(1, Math.floor(Math.min((innerWidth - x) / W, (innerHeight - y) / scr.offsetHeight)));
-let zoom = Number(params.get('zoom')) || (bare ? fit() : Math.min(4, fit(40, 200)));
+let zoom = Number(params.get('zoom')) || (bare ? fit() : Math.min(4, fit(40, 280)));
 let selected = null;
 document.body.classList.toggle('bare', bare);
 if (bare && !params.has('zoom')) {
@@ -76,6 +76,7 @@ function download() {
   const doc = document.documentElement.cloneNode(true);
   doc.querySelector('#toolbar').replaceChildren();
   doc.querySelector('.intro')?.remove();
+  doc.querySelector('.hud').replaceChildren();
   doc.querySelector('#scr').style.removeProperty('zoom');
   doc.querySelectorAll('.selected').forEach((n) => n.classList.remove('selected'));
   doc.querySelector('body').classList.remove('show-slots', 'bare');

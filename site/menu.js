@@ -1,4 +1,5 @@
-import { BUTTONS, CONGRATULATIONS, CREDITS, LEVELS, autoSelect, emptyPlayer, frame, hit, isEmpty, levelColour, line, ranked, seed, skips, statistics } from './supaplex.js';
+import { BUTTONS, CONGRATULATIONS, CREDITS, LEVELS, autoSelect, emptyPlayer, frame, hit, isEmpty, levelColour, line, optionHit, options, ranked, seed, skips, statistics } from './supaplex.js';
+import { musicOnGesture, save, settings, sound, startMusic, stopMusic } from './sound.js';
 
 const { levels, palette } = JSON.parse(document.getElementById('game').textContent);
 const params = new URLSearchParams(location.search);
@@ -54,8 +55,22 @@ function render() {
 
 const layer = scr.appendChild(make('div', { className: 'game' }));
 for (const b of BUTTONS) {
-  scr.append(make('div', { className: `hit${ARROWS[b.id] ? ' arrow' : ''}`, title: b.id.replace('-', ' ') }, { left: `${b.x}px`, top: `${b.y}px`, width: `${b.w}px`, height: `${b.h}px` }));
+  scr.append(make('div', { className: 'hit', title: b.id.replace('-', ' ') }, { left: `${b.x}px`, top: `${b.y}px`, width: `${b.w}px`, height: `${b.h}px` }));
 }
+
+// The game's own pointer: drawn at the screen pixel under the mouse, animating every 4 frames.
+const MOUSE = Array.from({ length: 8 }, (_, i) => `../svg/pixel/mouse/${i}.svg`);
+MOUSE.forEach((src) => { new Image().src = src; });
+const cursor = make('img', { className: 'cursor', alt: '', width: 8, height: 8, hidden: true });
+setInterval(() => { cursor.src = MOUSE[Math.floor((performance.now() * FPS) / 4000) % 8]; }, 4000 / FPS);
+scr.addEventListener('pointermove', (e) => {
+  if (e.pointerType !== 'mouse') return;
+  const [x, y] = at(e);
+  Object.assign(cursor.style, { left: `${x}px`, top: `${y}px` });
+  cursor.hidden = false;
+  scr.append(cursor);
+});
+scr.addEventListener('pointerleave', () => { cursor.hidden = true; });
 
 // Screen pixel under the pointer, whatever the zoom.
 function at(e) {
@@ -63,7 +78,7 @@ function at(e) {
   return [Math.floor(((e.clientX - r.left) * W) / r.width), Math.floor(((e.clientY - r.top) * H) / r.height)];
 }
 
-// Overlays: info screens fade through black, the cast and controls slide over from the right.
+// Overlays: info screens fade through black; gfx and options scroll the menu out to the left, and back from the left on exit.
 let overlay = null;
 function info(rows) {
   const box = make('div', { className: 'overlay' });
@@ -76,13 +91,75 @@ function info(rows) {
   const opened = fade(0, 1).then(() => { box.hidden = false; return fade(1, 0); });
   overlay = { close: () => opened.then(() => fade(0, 1)).then(() => { box.remove(); return fade(1, 0); }).then(() => black.remove()) };
 }
-function slide(src) {
+function slide(src, instant = false) {
   const box = make('div', { className: 'overlay' });
   box.append(make('img', { src, alt: '', width: W, height: H }));
-  scr.append(box);
-  const move = (from, to) => box.animate({ transform: [`translateX(${from}px)`, `translateX(${to}px)`] }, { duration: SLIDE, easing: 'steps(80)', fill: 'forwards' }).finished;
-  const opened = move(W, 0);
-  overlay = { close: () => opened.then(() => move(0, -W)).then(() => box.remove()) };
+  const menu = [...scr.children].filter((el) => el !== cursor);
+  scr.insertBefore(box, cursor.parentNode ? cursor : null);
+  const move = (from, to) => Promise.all([[box, 0], ...menu.map((el) => [el, -W])].map(([el, d]) => el.animate(
+    { translate: [`${from + d}px`, `${to + d}px`] }, { duration: SLIDE, easing: 'steps(80)', fill: 'forwards' }).finished));
+  const opened = instant ? Promise.resolve() : move(W, 0);
+  if (instant) menu.forEach((el) => { el.style.translate = `${-W}px`; });
+  overlay = {
+    box,
+    close: () => opened.then(() => move(0, W)).then(() => {
+      box.remove();
+      menu.forEach((el) => { el.getAnimations().forEach((a) => a.cancel()); el.style.translate = ''; });
+    }),
+  };
+  return overlay;
+}
+
+// The options screen: CONTROLS.DAT with its button text lit or dimmed, and border lines for the choices and the held keys.
+const held = new Set();
+const KEYS = { ArrowUp: 'up', ArrowLeft: 'left', ArrowDown: 'down', ArrowRight: 'right' };
+const crop = ({ x, y, w, h, lit }) => {
+  const box = make('div', { className: 'crop' }, { left: `${x}px`, top: `${y}px`, width: `${w}px`, height: `${h}px` });
+  box.append(make('img', { src: `controls-${lit ? 'lit' : 'dim'}.svg`, alt: '', width: W, height: H }, { left: `${-x}px`, top: `${-y}px` }));
+  return box;
+};
+function optionsScreen(instant) {
+  const { box } = slide('../svg/pixel/controls.svg', instant);
+  const look = box.appendChild(make('div', { className: 'game' }));
+  const draw = () => {
+    const direction = [...held].findLast((k) => k !== 'fire') ?? null;
+    const o = options(settings(), { direction, fire: held.has('fire') });
+    look.replaceChildren(...o.texts.map(crop), ...o.lines.map((l) => make('div', { className: 'line' },
+      { left: `${l.x}px`, top: `${l.y}px`, width: `${l.w}px`, height: `${l.h}px`, background: palette[l.colour] })));
+  };
+  draw();
+  overlay.options = { draw, held };
+}
+const OPTIONS = {
+  card(card) {
+    stopMusic();
+    save({ card });
+    sound('explosion');
+    startMusic();
+  },
+  music() {
+    const music = !settings().music;
+    save({ music });
+    music ? startMusic() : stopMusic();
+  },
+  fx() {
+    const fx = !settings().fx;
+    save({ fx });
+    sound('explosion');
+  },
+  keyboard: () => save({ joystick: false }),
+  joystick: () => save({ joystick: true }),
+};
+function optionClick(x, y) {
+  const id = optionHit(x, y);
+  if (id === 'exit') return closeOverlay();
+  if (!id) return;
+  (OPTIONS[id] ?? OPTIONS.card)(id);
+  overlay.options.draw();
+}
+function closeOverlay() {
+  overlay.close();
+  overlay = null;
 }
 
 // The name line: a hidden input so phones bring up a keyboard.
@@ -147,7 +224,7 @@ const ACTIONS = {
     info(statistics(player()));
   },
   gfx: () => slide('../svg/pixel/gfx.svg'),
-  controls: () => slide('../svg/pixel/controls.svg'),
+  controls: () => optionsScreen(),
   credits: () => info(CREDITS),
   demo: () => go('panel.html', { demo: 1 + Math.floor(Math.random() * LEVELS) }),
   ok() {
@@ -176,7 +253,6 @@ function step(id) {
 let repeat = null;
 function release() {
   clearTimeout(repeat);
-  scr.querySelector('.hit.down')?.classList.remove('down');
   if (state.pressed) { state.pressed = null; render(); }
 }
 function hold(id) {
@@ -190,13 +266,18 @@ function hold(id) {
   tick();
 }
 
+scr.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  if (overlay?.options) closeOverlay();
+});
 scr.addEventListener('pointerdown', (e) => {
   if (e.button) return;
   e.preventDefault();
-  if (overlay) return void (overlay.close(), (overlay = null));
+  const [x, y] = at(e);
+  if (overlay?.options) return optionClick(x, y);
+  if (overlay) return closeOverlay();
   if (state.input !== null) return void (confirmName(), render());
-  const [x, y] = at(e), id = hit(x, y);
-  e.target.closest('.hit')?.classList.add('down');
+  const id = hit(x, y);
   if (confirm) {
     if (id === 'ok') confirm();
     confirm = null;
@@ -216,8 +297,21 @@ scr.addEventListener('pointerup', release);
 scr.addEventListener('pointercancel', release);
 scr.addEventListener('lostpointercapture', release);
 
+// The options screen lights the arrow and fire borders while those keys are held.
+const holdKey = (e, down) => {
+  const key = e.key === ' ' ? 'fire' : KEYS[e.key];
+  if (!key || !overlay?.options) return false;
+  e.preventDefault();
+  held.delete(key);
+  if (down) held.add(key);
+  overlay.options.draw();
+  return true;
+};
+document.addEventListener('keyup', (e) => holdKey(e, false));
+addEventListener('blur', () => { held.clear(); overlay?.options?.draw(); });
 document.addEventListener('keydown', (e) => {
-  if (overlay) return void (overlay.close(), (overlay = null));
+  if (overlay?.options && e.key !== 'Escape') return void holdKey(e, true);
+  if (overlay) return closeOverlay();
   if (state.input !== null) {
     if (e.key === 'Enter') { confirmName(); render(); }
     else if (e.key === 'Escape') { state.input = null; input.blur(); input.value = ''; clear(); render(); }
@@ -231,3 +325,5 @@ document.addEventListener('keydown', (e) => {
 });
 
 render();
+if (params.has('options')) optionsScreen(true);
+if (!params.has('bare')) musicOnGesture();

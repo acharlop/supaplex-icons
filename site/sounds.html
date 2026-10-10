@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supaplex sounds</title>
+  <meta name="description" content="The Supaplex music and sound effects on every sound card the game supports.">
+  <link rel="icon" href="svg/pixel/murphy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="logo pix" href="./"><img class="px" src="svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
+    <nav class="nav"><a href="sprites.html">Sprites</a><a href="fonts.html">Fonts</a><a href="sounds.html" aria-current="page">Sounds</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
+    <a class="btn small gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+  </header>
+
+  <main class="wrap sounds">
+    <section>
+      <h1 class="pix x3">Sounds</h1>
+      <p>David Whittaker's music and effects, as each sound card played them. The card you pick here is the one the <a href="screens/menu.html">menu</a> plays, as on its <a href="screens/menu.html?options">controls</a> screen.</p>
+      <div class="seg" id="cards" role="group" aria-label="Sound card"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="pix yellow">Music</h2>
+      <div class="seg" id="music" role="group" aria-label="Music"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="pix yellow">Effects</h2>
+      <div class="effects" id="effects"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <img class="px" src="svg/pixel/infotron.svg" alt="">
+      <p>Supaplex (1991): program Philip Jespersen, graphics Michael Stopp, PC code Robin Heydon, PC graphics Matt Smith, music and FX David Whittaker. Dream Factory for Digital Integration; now freeware. Game data and audio via <a href="https://github.com/sergiou87/open-supaplex">OpenSupaplex</a>. A fan recreation, not affiliated with the authors. Code <a href="https://github.com/acharlop/supaplex-icons/blob/main/LICENSE">MIT</a>.</p>
+    </div>
+  </footer>
+  <div class="hud" data-level="4" data-title="Sounds"></div>
+  <script type="module" src="sounds.js"></script>
+  <script type="module" src="hud.js"></script>
+</body>
+</html>

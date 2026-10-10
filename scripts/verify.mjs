@@ -7,7 +7,7 @@ import { promisify } from 'node:util';
 import { decode, fontFiles, framePath, pixel, root, sprites } from './sprites.mjs';
 import { loadAsset } from './assets.mjs';
 import { readLevels } from './dat.mjs';
-import { frame, seed } from '../site/supaplex.js';
+import { frame, options, seed } from '../site/supaplex.js';
 
 const run = promisify(execFile);
 const chrome = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -114,8 +114,17 @@ for (const [id, s] of Object.entries(screens).filter(([id]) => !ids.length || id
     for (const t of f.texts) [...t.text].forEach((ch, i) => glyphs[ch.charCodeAt(0) - 0x20].forEach((row, y) => row.forEach((c, x) => {
       want[t.y + y][t.x + 6 * i + x] = palette[c ? t.colour : 0];
     })));
+    // The options screen with the default sound settings, nothing held: button text recoloured, then border lines.
+    const controls = await decode(sprites.find((sp) => sp.id === 'controls'));
+    const o = options({ card: 'combined', music: true, fx: true, joystick: false });
+    const g = controls.grids[0].map((row) => [...row]);
+    for (const t of o.texts) for (let y = t.y; y < t.y + t.h; y++) for (let x = t.x; x < t.x + t.w; x++) {
+      if (g[y][x] === (t.lit ? 15 : 1)) g[y][x] = t.lit ? 1 : 15;
+    }
+    for (const l of o.lines) for (let y = l.y; y < l.y + l.h; y++) for (let x = l.x; x < l.x + l.w; x++) g[y][x] = l.colour;
+    states.push(['&options', g.map((row) => row.map((c) => controls.palette[c]))]);
   }
-  for (const [query, want] of states) for (const k of [1, 2, 4]) screenJobs.push({ id: `screens/${id}${query.replace('&at=', '@')}`, query: `bare&zoom=${k}${query}`, k, want });
+  for (const [query, want] of states) for (const k of [1, 2, 4]) screenJobs.push({ id: `screens/${id}${query.replace(/&(at=)?/, '@')}`, query: `bare&zoom=${k}${query}`, k, want });
 }
 // One Chrome at a time: parallel instances share the default profile and hang on teardown.
 for (const [n, j] of screenJobs.entries()) {

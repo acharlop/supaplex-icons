@@ -37,7 +37,7 @@ for (const f of fonts) {
   const section = document.createElement('div');
   section.className = 'screen-font';
   section.innerHTML = `<h3>${f.family} <span class="muted">${f.h}px</span></h3>
-    <p>${f.files.map((path) => `<a href="${path}" download>${path.split('.').pop()}</a>`).join(' ')}</p>
+    <p>${f.files.map((path) => `<a class="btn small" href="${path}" download>${path.split('.').pop()}</a>`).join(' ')}</p>
     <div class="screen"><div class="sample" contenteditable="plaintext-only" spellcheck="false"></div></div>`;
   Object.assign(section.querySelector('.sample').dataset, { family: f.family, h: f.h });
   section.querySelector('.sample').textContent = f.samples.join('\n');

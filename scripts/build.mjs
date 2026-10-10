@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { BACKGROUND, decode, fontFiles, framePath, frameTitle, pixel, root, sprites } from './sprites.mjs';
+import { AUDIO, loadAsset } from './assets.mjs';
 import { buildScreens } from './screens.mjs';
 import { filmstripSvg, pixelSvg } from './svg.mjs';
 import { ttf, woff2 } from './ttf.mjs';
@@ -62,8 +63,13 @@ const screenSet = await buildScreens(COPYRIGHT);
 
 await cp(new URL('site/', root), dist, { recursive: true });
 await cp(new URL('svg/', root), new URL('svg/', dist), { recursive: true });
+// CSS cursors take an SVG's size from its own width and height: the game's pointer at 3x.
+const pointer = await readFile(new URL('svg/pixel/mouse/0.svg', root), 'utf8');
+await writeFile(new URL('cursor.svg', dist), pointer.replace('<svg ', '<svg width="24" height="24" '));
 await cp(fonts, new URL('fonts/', dist), { recursive: true });
 await cp(screens, new URL('screens/', dist), { recursive: true });
+await mkdir(new URL('sounds/', dist));
+for (const name of AUDIO) await writeFile(new URL(name.replace('audio/', 'sounds/'), dist), await loadAsset(name));
 await writeFile(new URL('screens.json', dist), JSON.stringify(screenSet));
 await writeFile(new URL('catalog.json', dist), JSON.stringify(catalog));
 

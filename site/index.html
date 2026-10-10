@@ -11,8 +11,8 @@
 <body>
   <header class="bar">
     <a class="logo pix" href="./"><img class="px" src="svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
-    <nav class="nav"><a href="sprites.html">Sprites</a><a href="fonts.html">Fonts</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
-    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <nav class="nav"><a href="sprites.html">Sprites</a><a href="fonts.html">Fonts</a><a href="sounds.html">Sounds</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
+    <a class="btn small gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
 
   <main>
@@ -21,11 +21,12 @@
         <div>
           <p class="kicker pix small">Digital Integration · 1991</p>
           <h1 class="pix x4">Every pixel of <em>Supaplex</em></h1>
-          <p>The sprites, fonts and screens of the 1991 classic, rebuilt as SVG, fonts and HTML. Every frame matches the original pixel for pixel at every size up to 256px.</p>
+          <p>The sprites, fonts, screens and sounds of the 1991 classic, rebuilt as SVG, fonts and HTML. Every frame matches the original pixel for pixel at every size up to 256px.</p>
           <div class="cta">
             <a class="btn primary" href="screens/menu.html">Play the menu</a>
             <a class="btn" href="sprites.html">Browse sprites</a>
             <a class="btn" href="fonts.html">Get the fonts</a>
+            <a class="btn" href="sounds.html">Hear the sounds</a>
           </div>
           <ul class="stats pix" id="stats"></ul>
         </div>
@@ -53,7 +54,7 @@
               <li><b>Arrows beside RANKINGS</b> scroll the ranking table.</li>
               <li><b>new player</b> asks for a name on the message line. Type, then Enter.</li>
               <li><b>skip level</b>, <b>delete player</b> and <b>statistics</b> answer on the message line.</li>
-              <li><b>gfx-tutor</b>, <b>controls</b> and the <b>chip</b> beside the hall of fame open their screens.</li>
+              <li><b>gfx-tutor</b>, <b>controls</b> and the <b>chip</b> beside the hall of fame open their screens. Controls picks the sound card.</li>
               <li><b>OK</b> starts the level: the game panel.</li>
             </ol>
           </div>
@@ -91,15 +92,28 @@
         </header>
         <div class="typeset" id="typeset"></div>
       </section>
+
+      <section class="section" id="sounds">
+        <header>
+          <div>
+            <h2 class="pix x3 yellow">Sounds</h2>
+            <p>David Whittaker's music and seven effects, on every sound card the game supports. Click to play one.</p>
+          </div>
+          <a class="btn" href="sounds.html">All sounds</a>
+        </header>
+        <div class="tiles fx" id="effects"></div>
+      </section>
     </div>
   </main>
 
   <footer>
     <div class="wrap">
       <img class="px" src="svg/pixel/infotron.svg" alt="">
-      <span>Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.</span>
+      <p>Supaplex (1991): program Philip Jespersen, graphics Michael Stopp, PC code Robin Heydon, PC graphics Matt Smith, music and FX David Whittaker. Dream Factory for Digital Integration; now freeware. Game data and audio via <a href="https://github.com/sergiou87/open-supaplex">OpenSupaplex</a>. A fan recreation, not affiliated with the authors. Code <a href="https://github.com/acharlop/supaplex-icons/blob/main/LICENSE">MIT</a>.</p>
     </div>
   </footer>
+  <div class="hud" data-level="1" data-title="Supaplex SVG"></div>
   <script type="module" src="home.js"></script>
+  <script type="module" src="hud.js"></script>
 </body>
 </html>

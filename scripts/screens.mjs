@@ -113,6 +113,13 @@ export async function buildScreens(copyright) {
       await writeFile(new URL(`${id}-dim.svg`, out), pixelSvg(g, from.palette, `${name}, dimmed`, EXACT));
       intro = ` data-from="${s.from}.svg" data-dim="${id}-dim.svg"`;
     }
+    if (s.script === 'menu') {
+      // The options screen recolours its button text between white (1) and grey (15).
+      const { grids: [c], palette: p } = await screen('controls');
+      for (const [state, from, to] of [['lit', 15, 1], ['dim', 1, 15]]) {
+        await writeFile(new URL(`controls-${state}.svg`, out), pixelSvg(c.map((row) => row.map((v) => (v === from ? to : v))), p, `Controls, ${state}`, EXACT));
+      }
+    }
 
     const families = new Set();
     const els = [];
@@ -153,8 +160,8 @@ ${faces}
 <body>
   <header class="bar">
     <a class="logo pix" href="../"><img class="px" src="../svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
-    <nav class="nav"><a href="../sprites.html">Sprites</a><a href="../fonts.html">Fonts</a><a href="title-2.html"${id === 'menu' ? '' : ' aria-current="page"'}>Screens</a><a href="menu.html"${id === 'menu' ? ' aria-current="page"' : ''}>Play the menu</a></nav>
-    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <nav class="nav"><a href="../sprites.html">Sprites</a><a href="../fonts.html">Fonts</a><a href="../sounds.html">Sounds</a><a href="title-2.html"${id === 'menu' ? '' : ' aria-current="page"'}>Screens</a><a href="menu.html"${id === 'menu' ? ' aria-current="page"' : ''}>Play the menu</a></nav>
+    <a class="btn small gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
   <main class="screens">
     <nav class="pages seg">${nav}</nav>
@@ -164,7 +171,15 @@ ${faces}
     </div></div>
     <div id="toolbar" class="toolbar"></div>
   </main>
+  <footer>
+    <div class="wrap">
+      <img class="px" src="../svg/pixel/infotron.svg" alt="">
+      <p>Supaplex (1991): program Philip Jespersen, graphics Michael Stopp, PC code Robin Heydon, PC graphics Matt Smith, music and FX David Whittaker. Dream Factory for Digital Integration; now freeware. Game data and audio via <a href="https://github.com/sergiou87/open-supaplex">OpenSupaplex</a>. A fan recreation, not affiliated with the authors. Code <a href="https://github.com/acharlop/supaplex-icons/blob/main/LICENSE">MIT</a>.</p>
+    </div>
+  </footer>
+  <div class="hud" data-level="${5 + pages.findIndex((p) => p.id === id)}" data-title="${escape(name)}"></div>
   <script type="module" src="../screen.js"></script>${game}
+  <script type="module" src="../hud.js"></script>
 </body>
 </html>
 `);

@@ -135,3 +135,75 @@ export function panel({ name, level, demo }, levels, seconds) {
     [160, 3, 6, pad(Math.floor(seconds / 3600), 2)], [184, 3, 6, pad(Math.floor(seconds / 60) % 60, 2)], [208, 3, 6, pad(seconds % 60, 2)],
   ].map(([x, y, colour, text]) => ({ x, y, colour, text }));
 }
+
+// The options screen (CONTROLS.DAT): kOptionsMenuButtonDescriptors, inclusive; the first hit wins.
+export const OPTION_BUTTONS = [
+  ['adlib', 12, 13, 107, 36], ['blaster', 12, 49, 107, 72], ['roland', 12, 85, 107, 108], ['combined', 12, 121, 107, 144],
+  ['standard', 132, 13, 211, 31], ['standard', 126, 43, 169, 54], ['samples', 174, 43, 217, 54],
+  ['music', 132, 86, 175, 120], ['fx', 134, 132, 168, 152], ['keyboard', 201, 80, 221, 154], ['joystick', 233, 80, 252, 154],
+  ['exit', 0, 181, 319, 199], ['exit', 284, 0, 319, 180],
+].map(([id, x1, y1, x2, y2]) => ({ id, x: x1, y: y1, w: x2 - x1 + 1, h: y2 - y1 + 1 }));
+export const optionHit = (x, y) => OPTION_BUTTONS.find((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h)?.id;
+export const CARDS = ['standard', 'samples', 'adlib', 'blaster', 'roland', 'combined'];
+
+// kOptionsMenuBorders: H runs right, V up, U up-right, D down-right.
+const OPTION_BORDERS = [
+  [['V', 144, 81, 5], ['H', 127, 76, 18], ['D', 122, 71, 5], ['V', 122, 70, 69], ['H', 76, 2, 46], ['U', 70, 8, 7]],
+  [['H', 103, 39, 16], ['V', 118, 77, 38], ['D', 119, 78, 6], ['V', 124, 85, 2], ['V', 124, 112, 8], ['U', 121, 115, 3], ['V', 120, 117, 2], ['H', 121, 126, 24], ['V', 144, 127, 2]],
+  [['V', 94, 44, 3], ['H', 94, 42, 19], ['V', 113, 81, 40], ['D', 114, 82, 14]],
+  [['V', 94, 78, 2], ['H', 95, 78, 11], ['D', 106, 79, 9], ['V', 115, 129, 42], ['H', 116, 129, 20]],
+  [['V', 88, 115, 3], ['H', 89, 115, 23], ['V', 112, 115, 3], ['V', 119, 94, 2], ['D', 120, 93, 8], ['D', 120, 94, 8]],
+  [['V', 22, 114, 2], ['H', 11, 114, 11], ['V', 10, 151, 38], ['H', 6, 151, 4], ['V', 5, 156, 6], ['V', 14, 155, 3], ['H', 15, 153, 6], ['V', 21, 160, 8], ['H', 22, 160, 20], ['U', 42, 159, 9], ['H', 51, 151, 74], ['D', 125, 152, 10], ['H', 135, 161, 9], ['V', 144, 161, 5]],
+  [['D', 34, 113, 5], ['U', 70, 116, 3], ['V', 73, 113, 5], ['V', 73, 84, 7], ['D', 72, 76, 2], ['H', 9, 111, 5], ['H', 9, 112, 6], ['V', 7, 112, 68], ['V', 8, 112, 68], ['H', 9, 45, 6], ['H', 9, 46, 5]],
+  [['V', 138, 37, 2], ['H', 125, 37, 13], ['V', 124, 67, 31], ['D', 125, 68, 6], ['H', 131, 73, 19], ['V', 150, 81, 9], ['D', 151, 36, 4], ['U', 182, 39, 4], ['V', 192, 38, 3]],
+  [['V', 156, 65, 7], ['V', 156, 69, 2], ['V', 157, 69, 2], ['H', 182, 71, 2], ['V', 183, 85, 14], ['V', 183, 102, 7], ['V', 183, 124, 13], ['U', 168, 139, 15], ['H', 165, 139, 3]],
+  [['V', 180, 65, 7], ['V', 180, 69, 2], ['V', 181, 69, 2], ['H', 182, 71, 2], ['V', 183, 85, 14], ['V', 183, 102, 7], ['V', 183, 124, 13], ['U', 168, 139, 15], ['H', 165, 139, 3]],
+  [['H', 180, 90, 6], ['V', 186, 90, 24], ['H', 187, 67, 38], ['V', 225, 67, 33], ['H', 226, 35, 33]],
+  [['V', 150, 160, 4], ['H', 150, 161, 31], ['V', 181, 161, 29], ['U', 181, 133, 8], ['V', 189, 125, 22], ['U', 189, 103, 4], ['V', 192, 99, 25], ['H', 192, 74, 51], ['U', 243, 74, 17]],
+  [['D', 257, 126, 10]], [['D', 257, 131, 10]], [['D', 257, 136, 10]], [['D', 257, 141, 10]], [['D', 257, 146, 10]], [['D', 257, 151, 10]],
+  [['D', 257, 116, 4], ['H', 261, 119, 4], ['D', 257, 111, 2], ['H', 259, 112, 7], ['H', 268, 113, 2], ['V', 272, 114, 2], ['V', 273, 114, 2], ['H', 280, 113, 7], ['H', 280, 114, 7], ['H', 283, 119, 3], ['H', 292, 119, 2], ['V', 293, 131, 12], ['H', 289, 131, 4], ['D', 283, 126, 4]],
+  [['V', 159, 180, 14], ['H', 160, 167, 28], ['V', 187, 166, 8], ['H', 187, 149, 10]],
+];
+const STEP = { U: [1, -1], D: [1, 1] };
+const DIRECTIONS = { up: 13, left: 14, down: 15, right: 16 };
+
+// The options screen for settings and held input: text rects recoloured in draw order (lit: 15 to 1, else 1 to 15), then border lines.
+export function options({ card, music, fx, joystick }, { direction = null, fire = false } = {}) {
+  const texts = [], lines = [];
+  const text = (lit, x, y, w, h) => texts.push({ x, y, w, h, lit });
+  // Borders share pixels, so later draws win.
+  const border = (i, colour) => {
+    for (const [type, x, y, len] of OPTION_BORDERS[i]) {
+      if (type === 'H') lines.push({ x, y, w: len, h: 1, colour });
+      else if (type === 'V') lines.push({ x, y: y - len + 1, w: 1, h: len, colour });
+      else for (let j = 0; j < len; j++) lines.push({ x: x + j * STEP[type][0], y: y + j * STEP[type][1], w: 1, h: 1, colour });
+    }
+  };
+  [[40, 21, 40, 8], [24, 57, 72, 8], [32, 93, 56, 8], [24, 129, 64, 8], [136, 18, 72, 8], [128, 46, 40, 5], [176, 46, 40, 5]].forEach((r) => text(false, ...r));
+  for (let i = 0; i < 10; i++) border(i, 4);
+  if (card === 'adlib') { text(true, 40, 21, 40, 8); border(0, 6); border(1, 6); }
+  else if (card === 'blaster' || card === 'combined') {
+    border(3, 6);
+    if (card === 'blaster') { text(true, 24, 57, 72, 8); border(2, 6); }
+    else { text(true, 24, 129, 64, 8); border(4, 6); border(6, 6); }
+  } else if (card === 'roland') { text(true, 32, 93, 56, 8); border(4, 6); border(5, 6); }
+  else {
+    text(true, 136, 18, 72, 8);
+    border(7, 6);
+    if (card === 'samples') { text(true, 176, 46, 40, 5); border(9, 6); }
+    else { text(true, 128, 46, 40, 5); border(8, 6); }
+  }
+  text(music, 134, 99, 40, 8);
+  border(10, music ? 6 : 4);
+  text(fx, 136, 138, 24, 8);
+  border(11, fx ? 6 : 4);
+  text(!joystick, 208, 87, 8, 62);
+  text(joystick, 240, 88, 8, 58);
+  border(18, joystick ? 6 : 4);
+  border(19, joystick ? 4 : 6);
+  border(12, direction ? 4 : 6);
+  border(17, fire ? 6 : 4);
+  for (const i of Object.values(DIRECTIONS)) border(i, 4);
+  if (direction) border(DIRECTIONS[direction], 6);
+  return { texts, lines };
+}

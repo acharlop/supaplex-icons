@@ -11,8 +11,8 @@
 <body>
   <header class="bar">
     <a class="logo pix" href="./"><img class="px" src="svg/pixel/murphy.svg" alt="">Supaplex <span>SVG</span></a>
-    <nav class="nav"><a href="sprites.html" aria-current="page">Sprites</a><a href="fonts.html">Fonts</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
-    <a class="gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
+    <nav class="nav"><a href="sprites.html" aria-current="page">Sprites</a><a href="fonts.html">Fonts</a><a href="sounds.html">Sounds</a><a href="screens/title-2.html">Screens</a><a href="screens/menu.html">Play the menu</a></nav>
+    <a class="btn small gh" href="https://github.com/acharlop/supaplex-icons">GitHub</a>
   </header>
 
   <main class="wrap layout">
@@ -22,8 +22,8 @@
       <div class="seg" id="sizes" role="group" aria-label="Preview size"></div>
       <div class="stages">
         <figure><div class="stage" id="stage-original"></div><figcaption>Original</figcaption></figure>
-        <figure><div class="stage" id="stage-pixel"></div><figcaption>Pixel <a id="dl-pixel" download>svg</a> <a id="dl-font" href="fonts.html">font</a></figcaption></figure>
-        <figure><div class="stage" id="stage-smooth"></div><figcaption>Smooth <a id="dl-smooth" download>svg</a></figcaption></figure>
+        <figure><div class="stage" id="stage-pixel"></div><figcaption>Pixel <a class="btn small" id="dl-pixel" download>svg</a> <a class="btn small" id="dl-font" href="fonts.html">font</a></figcaption></figure>
+        <figure><div class="stage" id="stage-smooth"></div><figcaption>Smooth <a class="btn small" id="dl-smooth" download>svg</a></figcaption></figure>
       </div>
     </section>
 
@@ -36,9 +36,11 @@
   <footer>
     <div class="wrap">
       <img class="px" src="svg/pixel/infotron.svg" alt="">
-      <span>Code MIT. Supaplex artwork © Digital Integration / Dream Factory (freeware); recreations are a fan preservation project.</span>
+      <p>Supaplex (1991): program Philip Jespersen, graphics Michael Stopp, PC code Robin Heydon, PC graphics Matt Smith, music and FX David Whittaker. Dream Factory for Digital Integration; now freeware. Game data and audio via <a href="https://github.com/sergiou87/open-supaplex">OpenSupaplex</a>. A fan recreation, not affiliated with the authors. Code <a href="https://github.com/acharlop/supaplex-icons/blob/main/LICENSE">MIT</a>.</p>
     </div>
   </footer>
+  <div class="hud" data-level="2" data-title="Sprites"></div>
   <script type="module" src="sprites.js"></script>
+  <script type="module" src="hud.js"></script>
 </body>
 </html>
