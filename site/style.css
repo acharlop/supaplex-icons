@@ -44,6 +44,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: repeating-conic-gradient(#2a2a28 0 25%, #222220 0 50%) 0 0 / 16px 16px; }
 figcaption { margin-top: .35rem; font-size: .9rem; display: flex; gap: .5rem; }
 .missing { color: #9a9a94; font-size: .85rem; padding: 1rem; }
+#stage-pixel img { background: #000; }
 
 .film { background-repeat: no-repeat; image-rendering: pixelated; background-color: #000; }
 @keyframes film { to { background-position: var(--end) 0; } }

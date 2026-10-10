@@ -53,15 +53,18 @@ function corners(grid, cut) {
   return out;
 }
 
-// Exact grid up to `exactUpTo` rendered px; above that, the hand-drawn `smooth` SVG if given, else convex corners trimmed by `cornerCut` source px.
+const escape = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Exact grid up to `exactUpTo` rendered px (at least native size); above that, the hand-drawn `smooth` SVG if given, else convex corners trimmed by `cornerCut` source px.
 export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }, smooth) {
   const w = grid[0].length, h = grid.length;
+  const exactTo = Math.max(exactUpTo, w);
   const exact = `<g class="grid" shape-rendering="crispEdges">${runsToPaths(grid, palette)}</g>`;
-  const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><title>${title}</title>`;
+  const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><title>${escape(title)}</title>`;
   if (smooth) {
     const body = smooth.replace(/^[\s\S]*?<\/title>|<\/svg>\s*$/g, '').replace(/>\s+</g, '><').trim();
     return head
-      + `<style>.smooth{display:none}@media (min-width:${exactUpTo + 1}px){.smooth{display:inline}.grid{display:none}}</style>`
+      + `<style>.smooth{display:none}@media (min-width:${exactTo + 1}px){.smooth{display:inline}.grid{display:none}}</style>`
       + `${exact}<g class="smooth">${body}</g></svg>\n`;
   }
   if (!cornerCut) return `${head}${exact}</svg>\n`;
@@ -70,7 +73,7 @@ export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }, smooth)
   const fills = [...byColor].map(([color, cs]) => `<path fill="${palette[color]}" d="${cs.map((c) => c.d).join('')}"/>`).join('');
   const holes = cuts.filter((c) => c.fill === TRANSPARENT).map((c) => c.d).join('');
   return head
-    + `<style>.soft{display:none}@media (min-width:${exactUpTo + 1}px){.soft{display:inline}.grid{mask:url(#cut)}}</style>`
+    + `<style>.soft{display:none}@media (min-width:${exactTo + 1}px){.soft{display:inline}.grid{mask:url(#cut)}}</style>`
     + `<mask id="cut"><rect width="${w}" height="${h}" fill="#fff"/><path d="${holes}"/></mask>`
     + `${exact}<g class="soft">${fills}</g></svg>\n`;
 }
@@ -79,5 +82,5 @@ export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }, smooth)
 export function filmstripSvg(frames, palette, title) {
   const w = frames[0][0].length, h = frames[0].length;
   const body = frames.map((grid, i) => runsToPaths(grid, palette, i * w)).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w * frames.length} ${h}" shape-rendering="crispEdges"><title>${title}</title>${body}</svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w * frames.length} ${h}" shape-rendering="crispEdges"><title>${escape(title)}</title>${body}</svg>\n`;
 }

@@ -10,27 +10,32 @@ const state = {
   kind: params.get('kind') ?? 'all',
 };
 const $ = (id) => document.getElementById(id);
-const done = (s) => s.pixel && s.smooth;
+const done = (s) => Boolean(s.pixel);
+// Screens and wide frames never shrink below native size.
+const widthAt = (sprite, size) => Math.max(size, sprite.w);
+let timer;
 
-$('progress').textContent = `${catalog.filter(done).length} / ${catalog.length} recreated`;
+$('progress').textContent = `${catalog.filter(done).length} / ${catalog.length} pixel-exact`;
 
 function save() {
   history.replaceState(null, '', `#s=${state.id}&size=${state.size}&kind=${state.kind}`);
 }
 
-function original(sprite, size, animate = true) {
+function original(sprite, width, animate = true) {
   const el = document.createElement('div');
   if (!sprite.frames) {
     el.className = 'missing';
     el.textContent = 'Not decoded yet';
     return el;
   }
-  const scale = size / sprite.w;
+  const scale = width / sprite.w;
   el.className = 'film';
-  el.style.width = `${size}px`;
+  el.style.width = `${sprite.w * scale}px`;
   el.style.height = `${sprite.h * scale}px`;
   el.style.backgroundImage = `url(original/${sprite.id}.svg)`;
   el.style.backgroundSize = `${sprite.w * sprite.frames * scale}px 100%`;
+  // Font thumbnails show "A"; frame 0 is the blank space glyph.
+  if (!animate && sprite.kind === 'font') el.style.backgroundPosition = `${-sprite.w * 33 * scale}px 0`;
   if (animate && sprite.frames > 1) {
     el.style.setProperty('--end', `${-sprite.w * sprite.frames * scale}px`);
     el.style.animation = `film ${sprite.frames * FRAME_MS}ms steps(${sprite.frames}) infinite`;
@@ -45,22 +50,31 @@ function variant(sprite, kind, size) {
     el.textContent = 'Not made yet';
     return el;
   }
-  const img = new Image(size, size * (sprite.h / sprite.w));
-  img.src = `svg/${kind}/${sprite.id}.svg`;
+  const frames = kind === 'pixel' ? sprite.pixel : [`svg/smooth/${sprite.id}.svg`];
+  const width = widthAt(sprite, size);
+  const img = new Image(width, width * (sprite.h / sprite.w));
+  img.src = frames[0];
   img.alt = `${sprite.name}, ${kind}`;
+  if (frames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (const src of frames) new Image().src = src;
+    let i = 0;
+    timer = setInterval(() => { img.src = frames[i = (i + 1) % frames.length]; }, FRAME_MS);
+  }
   return img;
 }
 
 function renderDetail() {
   const sprite = catalog.find((s) => s.id === state.id) ?? catalog[0];
+  clearInterval(timer);
   $('detail-name').textContent = sprite.name;
   $('detail-meta').textContent = [sprite.file, sprite.frames > 1 && `${sprite.frames} frames`, sprite.todo].filter(Boolean).join(' · ');
-  $('stage-original').replaceChildren(original(sprite, state.size));
+  $('stage-original').replaceChildren(original(sprite, widthAt(sprite, state.size)));
   for (const kind of ['pixel', 'smooth']) {
     $(`stage-${kind}`).replaceChildren(variant(sprite, kind, state.size));
     const link = $(`dl-${kind}`);
     link.hidden = !sprite[kind];
-    link.href = `svg/${kind}/${sprite.id}.svg`;
+    link.href = kind === 'pixel' ? sprite.pixel?.[0] ?? '' : `svg/smooth/${sprite.id}.svg`;
+    link.textContent = sprite.frames > 1 && kind === 'pixel' ? 'frame 1 svg' : 'svg';
   }
   document.querySelectorAll('.sizes button').forEach((b) => b.setAttribute('aria-pressed', Number(b.value) === state.size));
   document.querySelectorAll('#grid button').forEach((b) => b.setAttribute('aria-current', b.value === sprite.id));
@@ -78,7 +92,7 @@ function renderGrid() {
     name.textContent = sprite.name;
     const status = document.createElement('span');
     status.className = done(sprite) ? 'status done' : 'status';
-    status.textContent = done(sprite) ? 'Recreated' : sprite.pixel || sprite.smooth ? 'In progress' : 'To do';
+    status.textContent = done(sprite) ? 'Pixel-exact' : 'To do';
     button.append(thumb, name, status);
     button.addEventListener('click', () => { state.id = sprite.id; save(); renderDetail(); });
     li.append(button);

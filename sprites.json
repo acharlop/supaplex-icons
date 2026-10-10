@@ -623,7 +623,8 @@
           [192, 84],
           [224, 84]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "zonk-roll-right",
@@ -643,7 +644,8 @@
           [192, 100],
           [224, 100]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "infotron-roll-left",
@@ -658,12 +660,13 @@
           [32, 164],
           [64, 164],
           [96, 164],
-          [8, 164],
+          [128, 164],
           [160, 164],
           [192, 164],
           [224, 164]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "infotron-roll-right",
@@ -683,7 +686,8 @@
           [192, 180],
           [224, 180]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "explosion",
@@ -703,7 +707,8 @@
           [96, 196],
           [112, 196]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "infotron-explosion",
@@ -723,7 +728,8 @@
           [224, 196],
           [240, 196]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "bug-sparks",
@@ -749,11 +755,12 @@
           [304, 100],
           [304, 64]
         ]
-      }
+      },
+      "svg": true
     },
     {
-      "id": "snik-snak-turn",
-      "name": "Snik Snak turning",
+      "id": "snik-snak-turn-left",
+      "name": "Snik Snak turning left",
       "kind": "animation",
       "source": {
         "file": "MOVING.DAT",
@@ -769,7 +776,8 @@
           [48, 260],
           [112, 260]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "electron-spin",
@@ -789,124 +797,1133 @@
           [96, 404],
           [112, 404]
         ]
-      }
+      },
+      "svg": true
     },
     {
-      "id": "murphy-moves",
-      "name": "Murphy movement (37 sequences)",
+      "id": "murphy-move-vertical-facing-left",
+      "name": "Murphy moving up/down (facing left)",
       "kind": "animation",
       "source": {
-        "file": "MOVING.DAT"
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 66],
+          [0, 66],
+          [16, 66],
+          [16, 66],
+          [32, 66],
+          [32, 66],
+          [16, 66],
+          [16, 66]
+        ]
       },
-      "todo": "Map frame tables (mixed 16/32px frames)"
+      "svg": true
     },
     {
-      "id": "snik-snak-moves",
-      "name": "Snik Snak moving",
+      "id": "murphy-move-vertical-facing-right",
+      "name": "Murphy moving up/down (facing right)",
       "kind": "animation",
       "source": {
-        "file": "MOVING.DAT"
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [48, 66],
+          [48, 66],
+          [64, 66],
+          [64, 66],
+          [80, 66],
+          [80, 66],
+          [64, 66],
+          [64, 66]
+        ]
       },
-      "todo": "Map frame tables"
+      "svg": true
     },
     {
-      "id": "electron-moves",
-      "name": "Electron moving",
+      "id": "murphy-move-left",
+      "name": "Murphy moving left",
       "kind": "animation",
       "source": {
-        "file": "MOVING.DAT"
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [32, 32],
+          [64, 32],
+          [96, 32],
+          [128, 32],
+          [160, 32],
+          [192, 32],
+          [224, 32],
+          [256, 32]
+        ]
       },
-      "todo": "Map frame tables"
+      "svg": true
+    },
+    {
+      "id": "murphy-move-right",
+      "name": "Murphy moving right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [288, 32],
+          [0, 48],
+          [32, 48],
+          [64, 48],
+          [96, 48],
+          [128, 48],
+          [160, 48],
+          [192, 48]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-exit",
+      "name": "Murphy entering the exit",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [160, 64],
+          [160, 64],
+          [160, 64],
+          [160, 64],
+          [176, 64],
+          [176, 64],
+          [176, 64],
+          [176, 64],
+          [192, 64],
+          [192, 64],
+          [192, 64],
+          [192, 64],
+          [208, 64],
+          [208, 64],
+          [208, 64],
+          [208, 64],
+          [224, 64],
+          [224, 64],
+          [224, 64],
+          [224, 64],
+          [240, 64],
+          [240, 64],
+          [240, 64],
+          [240, 64],
+          [256, 64],
+          [256, 64],
+          [256, 64],
+          [256, 64],
+          [272, 64],
+          [272, 64],
+          [272, 64],
+          [272, 64],
+          [288, 64],
+          [288, 64],
+          [288, 64],
+          [288, 64]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-base-left",
+      "name": "Murphy eating base to the left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 0],
+          [32, 0],
+          [64, 0],
+          [96, 0],
+          [128, 0],
+          [160, 0],
+          [192, 0],
+          [224, 0]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-base-right",
+      "name": "Murphy eating base to the right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [256, 0],
+          [288, 0],
+          [0, 16],
+          [32, 16],
+          [64, 16],
+          [96, 16],
+          [128, 16],
+          [160, 16]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-base",
+      "name": "Base snapped away (Murphy eats without moving)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [256, 84],
+          [272, 84],
+          [288, 84],
+          [304, 84],
+          [256, 100],
+          [272, 100],
+          [288, 100]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-infotron-left",
+      "name": "Murphy eating infotron to the left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 212],
+          [32, 212],
+          [64, 212],
+          [96, 212],
+          [128, 212],
+          [160, 212],
+          [192, 212],
+          [224, 212]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-infotron-right",
+      "name": "Murphy eating infotron to the right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [256, 212],
+          [288, 212],
+          [0, 228],
+          [32, 228],
+          [64, 228],
+          [96, 228],
+          [128, 228],
+          [160, 228]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-infotron",
+      "name": "Infotron snapped away (Murphy eats without moving)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [192, 148],
+          [208, 148],
+          [224, 148],
+          [256, 148],
+          [272, 148],
+          [288, 148]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-zonk-left",
+      "name": "Murphy pushing zonk left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [0, 116],
+          [48, 116],
+          [96, 116],
+          [144, 116],
+          [192, 116],
+          [240, 116],
+          [0, 132],
+          [48, 132]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-zonk-right",
+      "name": "Murphy pushing zonk right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [96, 132],
+          [144, 132],
+          [192, 132],
+          [240, 132],
+          [0, 148],
+          [48, 148],
+          [96, 148],
+          [144, 148]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-red-disk-left",
+      "name": "Murphy collecting red disk to the left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [128, 260],
+          [160, 260],
+          [192, 260],
+          [224, 260],
+          [256, 260],
+          [288, 260],
+          [288, 276],
+          [288, 292]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-eat-red-disk-right",
+      "name": "Murphy collecting red disk to the right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [192, 308],
+          [224, 308],
+          [256, 308],
+          [288, 308],
+          [288, 308],
+          [288, 324],
+          [288, 340],
+          [192, 356],
+          [224, 356]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-red-disk",
+      "name": "Red disk snapped away (Murphy collects without moving)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [256, 164],
+          [272, 164],
+          [288, 164],
+          [304, 164],
+          [256, 180],
+          [272, 180],
+          [288, 180]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-yellow-disk-up",
+      "name": "Murphy pushing yellow disk up",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 32,
+        "frames": [
+          [304, 406]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-yellow-disk-left",
+      "name": "Murphy pushing yellow disk left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [0, 324],
+          [48, 324],
+          [96, 324],
+          [144, 324],
+          [192, 324],
+          [240, 324],
+          [0, 340],
+          [48, 340]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-yellow-disk-down",
+      "name": "Murphy pushing yellow disk down",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 32,
+        "frames": [
+          [288, 408]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-yellow-disk-right",
+      "name": "Murphy pushing yellow disk right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [96, 340],
+          [144, 340],
+          [192, 340],
+          [240, 340],
+          [0, 356],
+          [48, 356],
+          [96, 356],
+          [144, 356]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-orange-disk-left",
+      "name": "Murphy pushing orange disk left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [0, 276],
+          [48, 276],
+          [96, 276],
+          [144, 276],
+          [192, 276],
+          [240, 276],
+          [0, 292],
+          [48, 292]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-orange-disk-right",
+      "name": "Murphy pushing orange disk right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 48,
+        "h": 16,
+        "frames": [
+          [96, 292],
+          [144, 292],
+          [192, 292],
+          [240, 292],
+          [0, 308],
+          [48, 308],
+          [96, 308],
+          [144, 308]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-yawn",
+      "name": "Murphy yawning",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [32, 446],
+          [48, 446],
+          [64, 446],
+          [80, 446],
+          [96, 446],
+          [112, 446],
+          [128, 446],
+          [144, 446],
+          [160, 446],
+          [176, 446],
+          [192, 446],
+          [208, 446]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-sleep-left",
+      "name": "Murphy sleeping (wall on the left)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [304, 446],
+          [288, 446],
+          [272, 446]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-sleep-right",
+      "name": "Murphy sleeping (wall on the right)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [224, 446],
+          [240, 446],
+          [256, 446]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-still",
+      "name": "Murphy standing still",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [304, 132]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-left",
+      "name": "Murphy pushing left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [64, 132]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-push-right",
+      "name": "Murphy pushing right, up or down",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [97, 132]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-up",
+      "name": "Murphy snapping up",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [160, 64]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-left",
+      "name": "Murphy snapping left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [208, 16]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-down",
+      "name": "Murphy snapping down",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [176, 64]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-snap-right",
+      "name": "Murphy snapping right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [192, 16]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-plant-red-disk",
+      "name": "Murphy planting a red disk",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [288, 132]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "red-disk-planted",
+      "name": "Red disk planted",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [256, 164]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "murphy-use-terminal",
+      "name": "Murphy using a terminal",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [256, 388]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "snik-snak-turn-right",
+      "name": "Snik Snak turning right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [192, 388],
+          [112, 260],
+          [48, 260],
+          [96, 260],
+          [208, 388],
+          [80, 260],
+          [96, 244],
+          [64, 260]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "snik-snak-move-up",
+      "name": "Snik Snak moving up",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 424],
+          [16, 424],
+          [32, 424],
+          [48, 424],
+          [64, 424],
+          [80, 424],
+          [96, 424],
+          [112, 424]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "snik-snak-move-left",
+      "name": "Snik Snak moving left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [192, 228],
+          [224, 228],
+          [256, 228],
+          [288, 228],
+          [0, 244],
+          [32, 244],
+          [64, 244],
+          [96, 244]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "snik-snak-move-down",
+      "name": "Snik Snak moving down",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [144, 424],
+          [160, 424],
+          [176, 424],
+          [192, 424],
+          [208, 424],
+          [224, 424],
+          [240, 424],
+          [256, 424]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "snik-snak-move-right",
+      "name": "Snik Snak moving right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [128, 244],
+          [160, 244],
+          [192, 244],
+          [224, 244],
+          [256, 244],
+          [288, 244],
+          [0, 260],
+          [32, 260]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "electron-spin-reverse",
+      "name": "Electron spinning (reverse)",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [0, 404],
+          [112, 404],
+          [96, 404],
+          [80, 404],
+          [64, 404],
+          [48, 404],
+          [32, 404],
+          [16, 404]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "electron-move-up",
+      "name": "Electron moving up",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 16,
+        "h": 16,
+        "frames": [
+          [144, 404],
+          [160, 404],
+          [176, 404],
+          [192, 404],
+          [208, 404],
+          [224, 404],
+          [240, 404],
+          [256, 404]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "electron-move-left",
+      "name": "Electron moving left",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [0, 372],
+          [32, 372],
+          [64, 372],
+          [96, 372],
+          [128, 372],
+          [160, 372],
+          [192, 372],
+          [224, 372]
+        ]
+      },
+      "svg": true
+    },
+    {
+      "id": "electron-move-right",
+      "name": "Electron moving right",
+      "kind": "animation",
+      "source": {
+        "file": "MOVING.DAT",
+        "w": 32,
+        "h": 16,
+        "frames": [
+          [256, 372],
+          [288, 372],
+          [0, 388],
+          [32, 388],
+          [64, 388],
+          [96, 388],
+          [128, 388],
+          [160, 388]
+        ]
+      },
+      "svg": true
     },
     {
       "id": "font-6",
       "name": "Small font (6px)",
       "kind": "font",
       "source": {
-        "file": "CHARS6.DAT"
+        "file": "CHARS6.DAT",
+        "w": 6,
+        "h": 7,
+        "frames": [
+          [0, 0],
+          [8, 0],
+          [16, 0],
+          [24, 0],
+          [32, 0],
+          [40, 0],
+          [48, 0],
+          [56, 0],
+          [64, 0],
+          [72, 0],
+          [80, 0],
+          [88, 0],
+          [96, 0],
+          [104, 0],
+          [112, 0],
+          [120, 0],
+          [128, 0],
+          [136, 0],
+          [144, 0],
+          [152, 0],
+          [160, 0],
+          [168, 0],
+          [176, 0],
+          [184, 0],
+          [192, 0],
+          [200, 0],
+          [208, 0],
+          [216, 0],
+          [224, 0],
+          [232, 0],
+          [240, 0],
+          [248, 0],
+          [256, 0],
+          [264, 0],
+          [272, 0],
+          [280, 0],
+          [288, 0],
+          [296, 0],
+          [304, 0],
+          [312, 0],
+          [320, 0],
+          [328, 0],
+          [336, 0],
+          [344, 0],
+          [352, 0],
+          [360, 0],
+          [368, 0],
+          [376, 0],
+          [384, 0],
+          [392, 0],
+          [400, 0],
+          [408, 0],
+          [416, 0],
+          [424, 0],
+          [432, 0],
+          [440, 0],
+          [448, 0],
+          [456, 0],
+          [464, 0],
+          [472, 0],
+          [480, 0],
+          [488, 0],
+          [496, 0],
+          [504, 0]
+        ]
       },
-      "todo": "Decode 1bpp glyphs"
+      "svg": true
     },
     {
       "id": "font-8",
       "name": "Large font (8px)",
       "kind": "font",
       "source": {
-        "file": "CHARS8.DAT"
+        "file": "CHARS8.DAT",
+        "w": 8,
+        "h": 7,
+        "frames": [
+          [0, 0],
+          [8, 0],
+          [16, 0],
+          [24, 0],
+          [32, 0],
+          [40, 0],
+          [48, 0],
+          [56, 0],
+          [64, 0],
+          [72, 0],
+          [80, 0],
+          [88, 0],
+          [96, 0],
+          [104, 0],
+          [112, 0],
+          [120, 0],
+          [128, 0],
+          [136, 0],
+          [144, 0],
+          [152, 0],
+          [160, 0],
+          [168, 0],
+          [176, 0],
+          [184, 0],
+          [192, 0],
+          [200, 0],
+          [208, 0],
+          [216, 0],
+          [224, 0],
+          [232, 0],
+          [240, 0],
+          [248, 0],
+          [256, 0],
+          [264, 0],
+          [272, 0],
+          [280, 0],
+          [288, 0],
+          [296, 0],
+          [304, 0],
+          [312, 0],
+          [320, 0],
+          [328, 0],
+          [336, 0],
+          [344, 0],
+          [352, 0],
+          [360, 0],
+          [368, 0],
+          [376, 0],
+          [384, 0],
+          [392, 0],
+          [400, 0],
+          [408, 0],
+          [416, 0],
+          [424, 0],
+          [432, 0],
+          [440, 0],
+          [448, 0],
+          [456, 0],
+          [464, 0],
+          [472, 0],
+          [480, 0],
+          [488, 0],
+          [496, 0],
+          [504, 0]
+        ]
       },
-      "todo": "Decode 1bpp glyphs"
+      "svg": true
     },
     {
       "id": "title",
       "name": "Title screen",
       "kind": "screen",
       "source": {
-        "file": "TITLE.DAT"
+        "file": "TITLE.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "title-1",
       "name": "Title screen 1",
       "kind": "screen",
       "source": {
-        "file": "TITLE1.DAT"
+        "file": "TITLE1.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "title-2",
       "name": "Title screen 2",
       "kind": "screen",
       "source": {
-        "file": "TITLE2.DAT"
+        "file": "TITLE2.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "menu",
       "name": "Main menu",
       "kind": "screen",
       "source": {
-        "file": "MENU.DAT"
+        "file": "MENU.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "controls",
       "name": "Controls screen",
       "kind": "screen",
       "source": {
-        "file": "CONTROLS.DAT"
+        "file": "CONTROLS.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "back",
       "name": "Background",
       "kind": "screen",
       "source": {
-        "file": "BACK.DAT"
+        "file": "BACK.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "gfx",
       "name": "Level-select graphics",
       "kind": "screen",
       "source": {
-        "file": "GFX.DAT"
+        "file": "GFX.DAT",
+        "w": 320,
+        "h": 200,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     },
     {
       "id": "panel",
       "name": "Bottom panel",
       "kind": "screen",
       "source": {
-        "file": "PANEL.DAT"
+        "file": "PANEL.DAT",
+        "w": 320,
+        "h": 24,
+        "frames": [
+          [0, 0]
+        ]
       },
-      "todo": "Decode screen bitmap"
+      "svg": true
     }
   ]
 }
