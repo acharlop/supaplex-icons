@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Port 4-way</title>
+  <g id="s">
+    <path d="M0 2C0.9 2.2 1.6 2.9 2 4V12C1.6 13.1 0.9 13.8 0 14Z" fill="#666666"/>
+    <rect y="4" width="2.5" height="6.6" fill="#777777"/>
+    <rect y="4" width="2.5" height="4.4" fill="#888888"/>
+    <rect y="4" width="2.5" height="3" fill="#999999"/>
+    <rect y="4.6" width="2.5" height="1.7" fill="#bbbbbb"/>
+  </g>
+  <use href="#s" transform="matrix(-1 0 0 1 16 0)"/>
+  <use href="#s" transform="matrix(0 1 1 0 0 0)"/>
+  <use href="#s" transform="matrix(0 -1 1 0 0 16)"/>
+  <g id="c" transform="matrix(0 1 1 0 0 0)">
+    <rect x="2" y="4" width="12" height="8" fill="#bb0000"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M3 5V8M5 5V8M7 5V8M9 5V8M11 5V8M13 5V8" stroke="#ee1111"/>
+      <path d="M3 5.8V6.4M5 5.8V6.4M7 5.8V6.4M9 5.8V6.4M11 5.8V6.4M13 5.8V6.4" stroke="#ff9944"/>
+      <path d="M4 9.6V11M6 9.6V11M8 9.6V11M10 9.6V11M12 9.6V11" stroke="#884400" stroke-width="0.8"/>
+    </g>
+  </g>
+  <use href="#c" transform="matrix(0 1 1 0 0 0)"/>
+</svg>

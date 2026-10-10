@@ -1,7 +1,8 @@
 {
   "pixel": {
     "exactUpTo": 256,
-    "cornerCut": 0.25
+    "cornerCut": 0.25,
+    "smooth": false
   },
   "sprites": [
     {
@@ -143,7 +144,8 @@
         "frames": [
           [144, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-down",
@@ -157,7 +159,8 @@
         "frames": [
           [160, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-left",
@@ -171,7 +174,8 @@
         "frames": [
           [176, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-up",
@@ -185,7 +189,8 @@
         "frames": [
           [192, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "gravity-port-right",
@@ -199,7 +204,8 @@
         "frames": [
           [208, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "gravity-port-down",
@@ -213,7 +219,8 @@
         "frames": [
           [224, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "gravity-port-left",
@@ -227,7 +234,8 @@
         "frames": [
           [240, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "gravity-port-up",
@@ -241,7 +249,8 @@
         "frames": [
           [256, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "snik-snak",
@@ -311,7 +320,8 @@
         "frames": [
           [336, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-horizontal",
@@ -325,7 +335,8 @@
         "frames": [
           [352, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "port-cross",
@@ -339,7 +350,8 @@
         "frames": [
           [368, 0]
         ]
-      }
+      },
+      "svg": true
     },
     {
       "id": "electron",

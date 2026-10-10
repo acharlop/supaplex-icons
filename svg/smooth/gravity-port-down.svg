@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>Gravity port down</title>
+  <path d="M0 0V2.5C0.3 4.3 1 5.5 2 6V14C0.9 14.4 0.2 15.1 0 16H16C15.8 15.1 15.1 14.4 14 14V6C15 5.5 15.7 4.3 16 2.5V0Z" fill="#666666"/>
+  <rect x="2" width="9.8" height="16" fill="#777777"/>
+  <rect x="2" width="7" height="16" fill="#888888"/>
+  <rect x="2" width="4.8" height="16" fill="#999999"/>
+  <rect x="2.9" width="2.7" height="16" fill="#bbbbbb"/>
+  <rect x="2" y="6" width="12" height="8" fill="#bb0000"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M3 7H7.4M3 9H7.4M3 11H7.4M3 13H7.4" stroke="#ee1111"/>
+    <path d="M4.1 7H5.2M4.1 9H5.2M4.1 11H5.2M4.1 13H5.2" stroke="#ff9944"/>
+    <path d="M10.4 8H13.2M10.4 10H13.2M10.4 12H13.2" stroke="#884400" stroke-width="0.8"/>
+  </g>
+</svg>

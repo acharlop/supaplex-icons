@@ -53,11 +53,17 @@ function corners(grid, cut) {
   return out;
 }
 
-// Exact grid up to `exactUpTo` rendered px; above that, convex corners are trimmed by `cornerCut` source px.
-export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }) {
+// Exact grid up to `exactUpTo` rendered px; above that, the hand-drawn `smooth` SVG if given, else convex corners trimmed by `cornerCut` source px.
+export function pixelSvg(grid, palette, title, { exactUpTo, cornerCut }, smooth) {
   const w = grid[0].length, h = grid.length;
   const exact = `<g class="grid" shape-rendering="crispEdges">${runsToPaths(grid, palette)}</g>`;
   const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><title>${title}</title>`;
+  if (smooth) {
+    const body = smooth.replace(/^[\s\S]*?<\/title>|<\/svg>\s*$/g, '').replace(/>\s+</g, '><').trim();
+    return head
+      + `<style>.smooth{display:none}@media (min-width:${exactUpTo + 1}px){.smooth{display:inline}.grid{display:none}}</style>`
+      + `${exact}<g class="smooth">${body}</g></svg>\n`;
+  }
   if (!cornerCut) return `${head}${exact}</svg>\n`;
   const cuts = corners(grid, cornerCut);
   const byColor = Map.groupBy(cuts.filter((c) => c.fill !== TRANSPARENT), (c) => c.fill);

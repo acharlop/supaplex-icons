@@ -26,7 +26,9 @@ for (const sprite of sprites) {
     Object.assign(entry, { w, h, frames: frames.length });
 
     if (sprite.svg) {
-      const svg = pixelSvg(clearBackground(grids[0]), palette, sprite.name, pixel);
+      const smoothFile = new URL(`svg/smooth/${sprite.id}.svg`, root);
+      const smooth = pixel.smooth && existsSync(smoothFile) ? await readFile(smoothFile, 'utf8') : null;
+      const svg = pixelSvg(clearBackground(grids[0]), palette, sprite.name, pixel, smooth);
       await writeFile(new URL(`svg/pixel/${sprite.id}.svg`, root), svg);
     }
   }
